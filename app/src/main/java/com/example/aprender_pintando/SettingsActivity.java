@@ -4,11 +4,14 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsActivity  extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity  {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+    }
+    @Override
+    protected int getLayoutResourceId(){
+        return R.layout.activity_settings;
     }
 }
