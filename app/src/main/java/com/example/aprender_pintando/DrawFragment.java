@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+
 import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
 import com.example.aprender_pintando.Domain.Draw;
 
@@ -33,6 +34,7 @@ public class DrawFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
 
         draw = new Draw(view.getContext());
+        draw.setBackgroundColor(R.string.screen01);
 
         btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
