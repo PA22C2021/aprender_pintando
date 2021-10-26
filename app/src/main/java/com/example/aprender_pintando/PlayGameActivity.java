@@ -1,22 +1,20 @@
 package com.example.aprender_pintando;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
-import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
 
 public class PlayGameActivity extends BaseActivity {
-
+    ConstraintLayout view;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        // Set the color
-        getWindow().getDecorView().setBackgroundColor(R.string.screen01);
+        ConstraintLayout view = findViewById(R.id.play_game);
+        view.setBackgroundColor(R.string.screen01);
     }
 
     @Override
