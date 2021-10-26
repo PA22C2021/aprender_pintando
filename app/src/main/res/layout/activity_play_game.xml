@@ -84,7 +84,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Letra A"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="26dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
