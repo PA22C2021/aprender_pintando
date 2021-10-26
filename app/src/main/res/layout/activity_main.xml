@@ -10,9 +10,10 @@
         android:id="@+id/btn_play"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/play"
+        android:onClick="ComenzarJuego"
         android:scaleType="fitCenter"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn_continue"
@@ -26,33 +27,35 @@
         android:id="@+id/btn_continue"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/continuar"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/btn_grid"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_grid"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/grid"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/btn_settings"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_settings"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/settings"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
