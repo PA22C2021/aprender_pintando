@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
+import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
+
 public class PlayGameActivity extends AppCompatActivity {
 
     @Override
@@ -20,6 +23,6 @@ public class PlayGameActivity extends AppCompatActivity {
 
     public void RegresarMenu(View view)
     {
-        this.finish();
+        VolverMenuDialog.GetAlertDialog(view, this).show();
     }
 }

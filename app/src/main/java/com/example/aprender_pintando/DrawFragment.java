@@ -7,19 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
 import com.example.aprender_pintando.Domain.Draw;
 
 public class DrawFragment extends Fragment {
 
-    public DrawFragment() {
-        // Required empty public constructor
-    }
+    Draw draw;
+    ImageButton btnReiniciar;
 
-    // TODO: Rename and change types and number of parameters
-    public static DrawFragment newInstance(String param1, String param2) {
-        DrawFragment fragment = new DrawFragment();
-        return fragment;
+    public DrawFragment() {
     }
 
     @Override
@@ -33,6 +31,21 @@ public class DrawFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
 
-        return new Draw(view.getContext());
+
+        draw = new Draw(view.getContext());
+
+        btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
+        btnReiniciar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                if (!draw.isClean())
+                {
+                    ReiniciarLetraDialog.GetAlertDialog(view, draw).show();
+                }
+            }
+        });
+
+        return draw;
     }
 }

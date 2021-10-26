@@ -10,6 +10,7 @@ import android.view.View;
 
 public class Draw extends View {
 
+    boolean isClean = true;
     float x = 0;
     float y = 0;
     String action = "action";
@@ -23,8 +24,8 @@ public class Draw extends View {
     {
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(25);
-        paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(30);
+        paint.setColor(Color.BLACK);
         paint.setAntiAlias(true);
 
         if (action.equals("down"))
@@ -35,6 +36,7 @@ public class Draw extends View {
         if (action.equals("move"))
         {
             path.lineTo(x, y);
+            isClean = false;
         }
 
         canvas.drawPath(path, paint);
@@ -59,8 +61,17 @@ public class Draw extends View {
         return true;
     }
 
+    public boolean isClean()
+    {
+        return isClean;
+    }
+
     public void ClearDraw()
     {
+        x = 0;
+        y = 0;
+
         path.reset();
+        invalidate();
     }
 }
