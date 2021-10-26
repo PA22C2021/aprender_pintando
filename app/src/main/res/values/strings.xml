@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">aprender_pintando</string>
     <string name="letters_stuff_array">A,B,C,D,E,F,G,H,I,J,K,L,M,N,Ñ,O,P,Q,R,S,T,U,V,W,X,Y,Z</string>
+
+    <!--colores-->
+    <string name="screen01">#F9E79F</string>
+    <string name="screen02">#A3E4D7</string>
+    <string name="screen03">#C4DE95</string>
+    <string name="screen04">#A9CCE3</string>
+    <string name="screen05">#FADBD8</string>
+    <string name="screen06">#D2B4DE</string>
+
+    <!--sonidos-->
+    <string name="sound01">#F9E79F</string>
+    <string name="sound02">#F9E79F</string>
+    <string name="sound03">#F9E79F</string>
+    <string name="sound04">#F9E79F</string>
 </resources>
