@@ -9,18 +9,20 @@ import android.view.WindowManager;
 import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
 import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
 
-public class PlayGameActivity extends AppCompatActivity {
+public class PlayGameActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setTitle(null);
-        setContentView(R.layout.activity_play_game);
+    public void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        // Set the color
+        getWindow().getDecorView().setBackgroundColor(R.string.screen01);
     }
 
+    @Override
+    protected int getLayoutResourceId(){
+        return R.layout.activity_play_game;
+    }
     public void RegresarMenu(View view)
     {
         VolverMenuDialog.GetAlertDialog(view, this).show();
