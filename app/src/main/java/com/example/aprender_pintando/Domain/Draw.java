@@ -13,7 +13,7 @@ public class Draw extends View {
     boolean isClean = true;
     float x = 0;
     float y = 0;
-    String action = "action";
+    String action = "cleansed";
     Path path =  new Path();
 
     public Draw(Context context) {
@@ -22,24 +22,26 @@ public class Draw extends View {
 
     public void onDraw(Canvas canvas)
     {
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(30);
-        paint.setColor(Color.BLACK);
-        paint.setAntiAlias(true);
-
-        if (action.equals("down"))
+        if (action != "cleansed")
         {
-            path.moveTo(x, y);
-        }
+            Paint paint = new Paint();
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(60);
+            paint.setColor(Color.BLUE);
 
-        if (action.equals("move"))
-        {
-            path.lineTo(x, y);
-            isClean = false;
-        }
+            if (action.equals("down"))
+            {
+                path.moveTo(x, y);
+            }
 
-        canvas.drawPath(path, paint);
+            if (action.equals("move"))
+            {
+                path.lineTo(x, y);
+                isClean = false;
+            }
+
+            canvas.drawPath(path, paint);
+        }
     }
 
     public boolean onTouchEvent(MotionEvent e)
@@ -68,10 +70,8 @@ public class Draw extends View {
 
     public void ClearDraw()
     {
-        x = 0;
-        y = 0;
-
-        path.reset();
+        action = "cleansed";
+        path.rewind();
         invalidate();
     }
 }
