@@ -27,7 +27,7 @@ public class Draw extends View {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(60);
-            paint.setColor(Color.BLUE);
+            paint.setColor(Color.BLACK);
 
             if (action.equals("down"))
             {
