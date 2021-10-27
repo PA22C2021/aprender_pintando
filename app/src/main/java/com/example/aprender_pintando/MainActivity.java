@@ -20,4 +20,10 @@ public class MainActivity extends BaseActivity  {
         Intent intent = new Intent(view.getContext(), PlayGameActivity.class);
         startActivity(intent);
     }
+
+    public void ConfigurarJuego(View view)
+    {
+        Intent intent = new Intent(view.getContext(), SettingsActivity.class);
+        startActivity(intent);
+    }
 }
