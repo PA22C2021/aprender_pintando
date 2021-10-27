@@ -10,8 +10,8 @@
         android:id="@+id/btn_play"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/play"
         android:onClick="ComenzarJuego"
         android:scaleType="fitCenter"
@@ -26,36 +26,42 @@
         android:id="@+id/btn_continue"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/continuar"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/btn_grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_play" />
 
     <ImageButton
         android:id="@+id/btn_grid"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/grid"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/btn_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_continue" />
 
     <ImageButton
         android:id="@+id/btn_settings"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="52dp"
-        android:onClick="ConfigurarJuego"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/settings"
+        android:onClick="ConfigurarJuego"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_grid" />
 </androidx.constraintlayout.widget.ConstraintLayout>
