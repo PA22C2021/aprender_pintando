@@ -1,5 +1,8 @@
 package com.example.aprender_pintando;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -34,7 +37,7 @@ public class DrawFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
 
         draw = new Draw(view.getContext());
-        draw.setBackgroundColor(R.string.screen01);
+        draw.setBackgroundColor(getColor(getContext()));
 
         btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
@@ -69,4 +72,28 @@ public class DrawFragment extends Fragment {
             ReiniciarLetraDialog.GetAlertDialog(view, draw).show();
         }
     }
+
+    private int getColor(Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "settings", null, 1);
+        SQLiteDatabase _dbContext = admin.getReadableDatabase();
+
+        StringBuilder query = new StringBuilder();
+        query.append("select * from configuraciones");
+
+        Cursor fila = _dbContext.rawQuery(query.toString(), null);
+
+        int ret;
+
+        if(fila.moveToFirst()){
+            //TO DO: TOMAR EL COLOR DE LA DB
+            ret = R.string.screen04;
+        }else{
+            ret = R.string.screen01;
+            //throw new IllegalStateException("Unexpected value");
+        }
+
+        _dbContext.close();
+        return ret;
+    }
+
 }
