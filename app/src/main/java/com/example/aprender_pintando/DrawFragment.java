@@ -1,8 +1,5 @@
 package com.example.aprender_pintando;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -12,19 +9,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
-import com.example.aprender_pintando.Domain.AdminSQLiteOpenHelper;
+import com.example.aprender_pintando.Domain.ColorBD;
 import com.example.aprender_pintando.Domain.Draw;
+import com.example.aprender_pintando.Domain.Letra;
+import com.example.aprender_pintando.Domain.MotorJuego;
+import com.example.aprender_pintando.Enum.LetraEnum;
 
 public class DrawFragment extends Fragment {
 
+    TextView tvLetraActual;
     Draw draw;
+    ImageView imageLetra;
     ImageButton btnReiniciar, btnTerminar, btnRojo, btnVerde, btnAzul;
     SeekBar seekBar;
+    MotorJuego motorJuego;
 
     public DrawFragment() {
     }
@@ -40,21 +45,23 @@ public class DrawFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
 
-        draw = new Draw(view.getContext());
-        draw.setBackgroundColor(getColor(getContext()));
+        motorJuego = new MotorJuego();
 
+        draw = new Draw(view.getContext());
+        draw.setBackgroundColor(ColorBD.getColorJuego(getContext()));
+
+        tvLetraActual = (TextView) getActivity().findViewById(R.id.lblLetra);
         btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
+        imageLetra = (ImageView) getActivity().findViewById(R.id.imageLetra);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
         btnRojo = (ImageButton) getActivity().findViewById(R.id.btnRojo);
         btnVerde = (ImageButton) getActivity().findViewById(R.id.btnVerde);
         btnAzul = (ImageButton) getActivity().findViewById(R.id.btnAzul);
         seekBar = (SeekBar) getActivity().findViewById(R.id.barTrazo);
 
-
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
                 ReiniciarLetraButtonOnClick(view);
             }
         });
@@ -111,33 +118,22 @@ public class DrawFragment extends Fragment {
         }
     };
 
-    private int getColor(Context context){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "settings", null, 1);
-        SQLiteDatabase _dbContext = admin.getReadableDatabase();
-
-        StringBuilder query = new StringBuilder();
-        query.append("select * from configuraciones");
-
-        Cursor fila = _dbContext.rawQuery(query.toString(), null);
-
-        int ret;
-
-        if(fila.moveToFirst()){
-            //TO DO: TOMAR EL COLOR DE LA DB
-            ret = R.string.screen04;
-        }else{
-            ret = R.string.screen01;
-            //throw new IllegalStateException("Unexpected value");
-        }
-
-        _dbContext.close();
-        return ret;
-    }
-
-
     public void TerminarButtonOnClick(View view)
     {
-        Toast.makeText(view.getContext(), "Juego finalizado", Toast.LENGTH_LONG).show();
+        draw.ClearDraw();
+        Letra letra = motorJuego.LetraSiguiente();
+
+        if (letra != null)
+        {
+            imageLetra.setImageResource(letra.getUrl());
+            tvLetraActual.setText(letra.toString());
+        }
+        else
+        {
+            // TODO: Acá disparar el activity de resultados.
+            imageLetra.setImageResource(R.drawable.grid);
+            tvLetraActual.setText("Gracias por jugar");
+        }
     }
 
     public void ReiniciarLetraButtonOnClick(View view)
