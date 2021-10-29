@@ -56,8 +56,8 @@
         android:id="@+id/btnTerminar"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/terminar"
         android:scaleType="fitCenter"
         android:textAlignment="center"
@@ -68,14 +68,66 @@
         android:id="@+id/btnReiniciar"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/reiniciar"
         android:foregroundGravity="fill_horizontal"
         android:scaleType="fitCenter"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnAtras"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/atras"
+        android:foregroundGravity="fill_horizontal"
+        android:scaleType="fitCenter"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnRojo"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rojo"
+        android:foregroundGravity="fill_horizontal"
+        android:scaleType="fitCenter"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnAzul"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/azul"
+        android:foregroundGravity="fill_horizontal"
+        android:scaleType="fitCenter"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnVerde"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/verde"
+        android:foregroundGravity="fill_horizontal"
+        android:scaleType="fitCenter"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/lblLetra"
@@ -101,5 +153,16 @@
         app:layout_constraintTop_toTopOf="@+id/fragmentContainerView"
         app:layout_constraintVertical_bias="0.44"
         app:srcCompat="@drawable/letra_a" />
+
+    <SeekBar
+        android:id="@+id/barTrazo"
+        android:layout_width="188dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="12dp"
+        android:max="50"
+        android:progress="25"
+        app:layout_constraintBottom_toTopOf="@+id/btnRojo"
+        app:layout_constraintEnd_toStartOf="@+id/btnTerminar"
+        app:layout_constraintStart_toEndOf="@+id/btnReiniciar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

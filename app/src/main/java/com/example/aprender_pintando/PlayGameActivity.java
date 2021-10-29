@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
+import com.example.aprender_pintando.Domain.AdminSQLiteOpenHelper;
 
 public class PlayGameActivity extends BaseActivity {
     ConstraintLayout view;

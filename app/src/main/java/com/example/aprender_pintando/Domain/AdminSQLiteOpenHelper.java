@@ -1,4 +1,4 @@
-package com.example.aprender_pintando;
+package com.example.aprender_pintando.Domain;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
