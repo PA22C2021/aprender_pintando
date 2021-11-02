@@ -7,13 +7,18 @@ public class Letra {
 
     private int UrlImagen;
     private boolean Completa = false;
+    private boolean Visualizada = false;
     private LetraEnum Letra = LetraEnum.A;
 
-    public Letra()
+    public Letra(int resourceId)
     {
         UrlImagen = LetrasHelper.UrlLetra(Letra);
     }
 
+    public Letra()
+    {
+
+    }
     public Letra(LetraEnum letra)
     {
         this.Letra = letra;
@@ -35,8 +40,19 @@ public class Letra {
         return this.Letra;
     }
 
+    public void setVisualizada(boolean visualizada)
+    {
+        this.Visualizada = visualizada;
+    }
+
+    public boolean getVisualizada()
+    {
+        return this.Visualizada;
+    }
+
     @Override
     public String toString() {
         return "Letra: " + Letra.toString();
     }
+
 }
