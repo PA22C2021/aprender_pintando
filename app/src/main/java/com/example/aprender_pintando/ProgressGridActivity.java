@@ -17,9 +17,7 @@ public class ProgressGridActivity extends BaseActivity  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         LetraAdapter adapter = new LetraAdapter(this, listar());
-
         gridView = (GridView) findViewById(R.id.grilla_progreso);
         gridView.setAdapter(adapter);
     }
@@ -29,12 +27,9 @@ public class ProgressGridActivity extends BaseActivity  {
     }
 
     private ArrayList<Letra> listar(){
-        String[] meses = getResources().getStringArray(R.array.letras);
         TypedArray imagenes = getResources().obtainTypedArray(R.array.imagenesLetras);
-
         ArrayList<Letra> lista = new ArrayList<>();
-
-        for (int i=0;i<meses.length; i++){
+        for (int i=0;i<imagenes.length(); i++){
             lista.add(new Letra(imagenes.getResourceId(i,0)));
         }
         return lista;
