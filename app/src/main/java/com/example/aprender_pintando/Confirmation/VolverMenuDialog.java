@@ -4,19 +4,21 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.aprender_pintando.Domain.Draw;
 import com.example.aprender_pintando.PlayGameActivity;
 
 public class VolverMenuDialog
 {
-    public static AlertDialog GetAlertDialog(View view, PlayGameActivity playGameActivity)
+    public static AlertDialog GetAlertDialog(View view, AppCompatActivity activity)
     {
         AlertDialog dialogo = new AlertDialog
                 .Builder(view.getContext())
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        playGameActivity.finish();
+                        activity.finish();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -25,7 +27,7 @@ public class VolverMenuDialog
                         dialog.dismiss();
                     }
                 })
-                .setTitle("Reiniciar")
+                .setTitle("ATENCION")
                 .setMessage("¿Volver al menú?")
                 .create();
 

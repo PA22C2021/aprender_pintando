@@ -23,8 +23,4 @@ public class PlayGameActivity extends BaseActivity {
     protected int getLayoutResourceId(){
         return R.layout.activity_play_game;
     }
-    public void RegresarMenu(View view)
-    {
-        VolverMenuDialog.GetAlertDialog(view, this).show();
-    }
 }

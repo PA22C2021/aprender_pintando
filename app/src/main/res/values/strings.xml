@@ -10,11 +10,6 @@
     <string name="screen05">#FADBD8</string>
     <string name="screen06">#D2B4DE</string>
 
-    <!--sonidos-->
-    <string name="sound01">#F9E79F</string>
-    <string name="sound02">#F9E79F</string>
-    <string name="sound03">#F9E79F</string>
-    <string name="sound04">#F9E79F</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

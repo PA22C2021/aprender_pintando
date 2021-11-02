@@ -17,10 +17,23 @@ public class MainActivity extends BaseActivity  {
         btn_grilla = (ImageButton) findViewById(R.id.btn_grid);
         btn_config = (ImageButton) findViewById(R.id.btn_settings);
 
+        iniciarSonidoAleatorio();
     }
     @Override
     protected int getLayoutResourceId(){
         return R.layout.activity_main;
+    }
+
+    private void iniciarSonidoAleatorio(){
+        rSonido = (int) Math.floor(Math.random()*(1-4+1)+4); // Valor entre M y N, ambos incluidos.
+        if(!sonidos[rSonido].isPlaying()){
+            for (int i = 0; i< 4; i++) {
+                if(sonidos[i].isPlaying())
+                    sonidos[i].stop();
+            }
+            sonidos[rSonido].start();
+            sonidos[rSonido].setLooping(true);
+        }
     }
 
     public void ComenzarJuego(View view)
