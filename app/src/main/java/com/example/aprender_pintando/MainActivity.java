@@ -13,7 +13,6 @@ public class MainActivity extends BaseActivity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         btn_play = (ImageButton) findViewById(R.id.btn_play);
-        btn_continuar = (ImageButton) findViewById(R.id.btn_continue);
         btn_grilla = (ImageButton) findViewById(R.id.btn_grid);
         btn_config = (ImageButton) findViewById(R.id.btn_settings);
 
