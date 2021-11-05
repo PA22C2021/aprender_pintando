@@ -17,17 +17,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.gridlayout.widget.GridLayout
+    <GridView
         android:id="@+id/grilla_progreso"
         android:layout_width="409dp"
         android:layout_height="629dp"
-        android:numColumns="3"
         android:horizontalSpacing="2dp"
-        android:verticalSpacing="2dp"
+        android:numColumns="3"
         android:stretchMode="columnWidth"
-        tools:ignore="MissingConstraints"
+        android:verticalSpacing="2dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="101dp">
+        tools:layout_editor_absoluteY="100dp"></GridView>
 
-    </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
