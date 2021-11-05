@@ -14,8 +14,39 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "create table configuraciones (_ID integer primary key autoincrement, Sonido text, Color text, PartidaIniciada text)";
-
+        String queryCreateConfiguraciones = "CREATE TABLE configuraciones (_ID integer PRIMARY KEY AUTOINCREMENT, Sonido text, Color text, PartidaIniciada text)";
+        String queryCreateLetras = " CREATE TABLE letras (letra varchar(1) PRIMARY KEY, isVisualized Boolean, isCompleted Boolean, int nroLetra)";
+        String queryInsertLetras = " INSERT INTO letras (letra, isVisualized, isCompleted)\n" +
+                                    "VALUES\n" +
+                                    "('A' , false, false),\n" +
+                                    "('B' , false, false),\n" +
+                                    "('C' , false, false),\n" +
+                                    "('D' , false, false),\n" +
+                                    "('E' , false, false),\n" +
+                                    "('F' , false, false),\n" +
+                                    "('G' , false, false),\n" +
+                                    "('H' , false, false),\n" +
+                                    "('I' , false, false),\n" +
+                                    "('J' , false, false),\n" +
+                                    "('K' , false, false),\n" +
+                                    "('L' , false, false),\n" +
+                                    "('M' , false, false),\n" +
+                                    "('N' , false, false),\n" +
+                                    "('Ñ' , false, false),\n" +
+                                    "('O' , false, false),\n" +
+                                    "('P' , false, false),\n" +
+                                    "('Q' , false, false),\n" +
+                                    "('R' , false, false),\n" +
+                                    "('S' , false, false),\n" +
+                                    "('T' , false, false),\n" +
+                                    "('U' , false, false),\n" +
+                                    "('V' , false, false),\n" +
+                                    "('W' , false, false),\n" +
+                                    "('X' , false, false),\n" +
+                                    "('Y' , false, false),\n" +
+                                    "('Z' , false, false),";
+        String queryInsertConfig = " INSERT INTO configuracion (sonido, color, partidaIniciada) VALUES ('sonido1.mp3', '#ccc', false)";
+        String query = queryCreateConfiguraciones + queryCreateLetras + queryInsertLetras + queryInsertConfig;
         sqLiteDatabase.execSQL(query);
     }
 
@@ -23,4 +54,15 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+    public void abrir(){
+        this.getWritableDatabase();
+    }
+
+
+    public void cerrar(){
+        this.close();
+    }
+
+
 }
