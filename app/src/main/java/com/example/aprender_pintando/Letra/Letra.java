@@ -1,6 +1,6 @@
 package com.example.aprender_pintando.Letra;
 
-/*public class Letra {
+public class Letra extends LetraDAO{
 
     private String letra;
     private boolean isVisualized;
@@ -13,6 +13,10 @@ package com.example.aprender_pintando.Letra;
         this.isCompleted = isCompleted;
         this.nroLetra = nroLetra;
     }
+
+    public Letra() {
+    }
+
 
     public String getLetra() {
         return letra;
@@ -46,4 +50,3 @@ package com.example.aprender_pintando.Letra;
         this.nroLetra = nroLetra;
     }
 }
-*/
