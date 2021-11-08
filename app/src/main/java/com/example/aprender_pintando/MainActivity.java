@@ -16,9 +16,9 @@ public class MainActivity extends BaseActivity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         btn_play = (ImageButton) findViewById(R.id.btn_play);
-        btn_grilla = (ImageButton) findViewById(R.id.btn_grid);AdminSQLiteOpenHelper
+        btn_grilla = (ImageButton) findViewById(R.id.btn_grid);
         btn_config = (ImageButton) findViewById(R.id.btn_settings);
-        AdminSQLiteOpenHelper db = new (this, "aprender_pintando", null , 1);
+        AdminSQLiteOpenHelper db = new AdminSQLiteOpenHelper(this, "aprender_pintando", null , 1);
         Log.d("db ------ " , db.toString());
 
         iniciarSonidoAleatorio();
