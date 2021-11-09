@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,8 +27,9 @@ public class DrawFragment extends Fragment {
 
     TextView tvLetraActual;
     Draw draw;
+    ProgressBar progressBar;
     ImageView imageLetra;
-    ImageButton btnReiniciar, btnTerminar, btnRojo, btnVerde, btnAzul;
+    ImageButton btnReiniciar, btnTerminar;
     SeekBar seekBar;
     MotorJuego motorJuego;
 
@@ -54,10 +56,7 @@ public class DrawFragment extends Fragment {
         btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
         imageLetra = (ImageView) getActivity().findViewById(R.id.imageLetra);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
-        btnRojo = (ImageButton) getActivity().findViewById(R.id.btnRojo);
-        btnVerde = (ImageButton) getActivity().findViewById(R.id.btnVerde);
-        btnAzul = (ImageButton) getActivity().findViewById(R.id.btnAzul);
-        seekBar = (SeekBar) getActivity().findViewById(R.id.barTrazo);
+        progressBar = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
 
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,50 +72,9 @@ public class DrawFragment extends Fragment {
             }
         });
 
-        btnRojo.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                draw.SetColor(Color.RED);
-            }
-        });
-
-        btnVerde.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                draw.SetColor(Color.GREEN);
-            }
-        });
-
-        btnAzul.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                draw.SetColor(Color.BLUE);
-            }
-        });
-
-        seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
-
+        draw.SetStroke(100);
         return draw;
     }
-
-    SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            // updated continuously as the user slides the thumb
-            draw.SetStroke(progress + 15);
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-            // called when the user first touches the SeekBar
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-            // called after the user finishes moving the SeekBar
-        }
-    };
 
     public void TerminarButtonOnClick(View view)
     {
