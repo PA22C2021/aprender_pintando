@@ -40,6 +40,9 @@
     <string name="screen05">#FADBD8</string>
     <string name="screen06">#D2B4DE</string>
 
+    <string name="isVisualized">#A9A9A9</string>
+    <string name="isCompleted">#80BA9D</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -16,7 +16,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/volver"
+        android:background="@drawable/back"
         android:cropToPadding="false"
         android:onClick="RegresarMenu"
         android:paddingBottom="20dp"

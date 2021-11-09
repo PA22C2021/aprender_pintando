@@ -41,6 +41,7 @@ public class SettingsActivity extends BaseActivity  {
         ConfiguracionCtrl cfg  = new ConfiguracionCtrl(this);
         switch (color){
             case 1:
+<<<<<<< HEAD
                 // screen.setBackgroundColor(R.string.screen01);
                 screen.setBackgroundColor(Color.parseColor("#F9E79F"));
                 cfg.actualizarColorConfiguracion("#F9E79F");
@@ -70,6 +71,25 @@ public class SettingsActivity extends BaseActivity  {
                 screen.setBackgroundColor(Color.parseColor("#D2B4DE"));
                 cfg.actualizarColorConfiguracion("#D2B4DE");
 
+=======
+                screen.setBackgroundColor(Color.parseColor(getString(R.string.screen01)));
+                break;
+            case 2:
+                screen.setBackgroundColor(Color.parseColor(getString(R.string.screen02)));
+                break;
+            case 3:
+                screen.setBackgroundColor(Color.parseColor(getString(R.string.screen03)));
+                break;
+            case 4:
+                screen.setBackgroundColor(Color.parseColor(getString(R.string.screen04)));
+               break;
+            case 5:
+                screen.setBackgroundColor(Color.parseColor(getString(R.string.screen05)));
+
+                break;
+            case 6:
+                screen.setBackgroundColor(Color.parseColor(getString(R.string.screen06)));
+>>>>>>> 0caae03ade8ff48d054528f306818bb68c5601d3
 
                 break;
             default:
