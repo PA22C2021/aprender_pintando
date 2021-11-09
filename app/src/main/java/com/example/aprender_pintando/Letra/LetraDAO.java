@@ -45,7 +45,7 @@ public class LetraDAO {
         Cursor fila = db.rawQuery(query, null);
         String letra = fila.getString(0);
         boolean isVisualized = fila.getString(1) == "false" ? false : true ;
-        boolean isCompleted = fila.getString(1) == "false" ? false : true;
+        boolean isCompleted = fila.getString(2) == "false" ? false : true;
         int _nroLetra = Integer.parseInt(fila.getString(3));
 
         Letra l = new Letra(letra,isVisualized,isCompleted,_nroLetra);

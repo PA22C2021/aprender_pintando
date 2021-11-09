@@ -2,21 +2,24 @@ package com.example.aprender_pintando.Configuracion;
 
 public class Configuracion extends ConfiguracionDAO {
 
-    private String sonido;
+    private int sonido;
     private String color;
     private boolean partidaIniciada;
 
-    public Configuracion(String sonido, String color, boolean partidaIniciada) {
+    public Configuracion() {
+    }
+
+    public Configuracion(int sonido , String color, boolean partidaIniciada) {
         this.sonido = sonido;
         this.color = color;
         this.partidaIniciada = partidaIniciada;
     }
 
-    public String getSonido() {
+    public int getSonido() {
         return sonido;
     }
 
-    public void setSonido(String sonido) {
+    public void setSonido(int sonido) {
         this.sonido = sonido;
     }
 

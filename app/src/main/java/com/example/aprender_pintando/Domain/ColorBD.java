@@ -12,7 +12,7 @@ import com.example.aprender_pintando.R;
 public abstract class ColorBD {
 
     public static int getColorJuego(Context context){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "settings", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "aprender_pintando", null, 1);
         SQLiteDatabase _dbContext = admin.getReadableDatabase();
 
         StringBuilder query = new StringBuilder();
@@ -35,7 +35,7 @@ public abstract class ColorBD {
     }
 
     public static int getColor(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(view.getContext(), "settings", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(view.getContext(), "aprender_pintando", null, 1);
         SQLiteDatabase _dbContext = admin.getReadableDatabase();
 
         StringBuilder query = new StringBuilder();
@@ -86,7 +86,7 @@ public abstract class ColorBD {
     private static void guardarColor(int color, View view){
         ContentValues val = new ContentValues();
         val.put("Color", color);
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(view.getContext(), "settings", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(view.getContext(), "aprender_pintando", null, 1);
         admin.getWritableDatabase().insert("configuraciones", null, val);
         admin.close();
     }

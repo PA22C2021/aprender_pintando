@@ -14,40 +14,43 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String queryCreateConfiguraciones = "CREATE TABLE configuraciones (_ID integer PRIMARY KEY AUTOINCREMENT, Sonido text, Color text, PartidaIniciada text)";
-        String queryCreateLetras = " CREATE TABLE letras (letra varchar(1) PRIMARY KEY, isVisualized Boolean, isCompleted Boolean, integer nroLetra)";
-        String queryInsertLetras = " INSERT INTO letras (letra, isVisualized, isCompleted)\n" +
-                                    "VALUES\n" +
-                                    "('A' , false, false),\n" +
-                                    "('B' , false, false),\n" +
-                                    "('C' , false, false),\n" +
-                                    "('D' , false, false),\n" +
-                                    "('E' , false, false),\n" +
-                                    "('F' , false, false),\n" +
-                                    "('G' , false, false),\n" +
-                                    "('H' , false, false),\n" +
-                                    "('I' , false, false),\n" +
-                                    "('J' , false, false),\n" +
-                                    "('K' , false, false),\n" +
-                                    "('L' , false, false),\n" +
-                                    "('M' , false, false),\n" +
-                                    "('N' , false, false),\n" +
-                                    "('Ñ' , false, false),\n" +
-                                    "('O' , false, false),\n" +
-                                    "('P' , false, false),\n" +
-                                    "('Q' , false, false),\n" +
-                                    "('R' , false, false),\n" +
-                                    "('S' , false, false),\n" +
-                                    "('T' , false, false),\n" +
-                                    "('U' , false, false),\n" +
-                                    "('V' , false, false),\n" +
-                                    "('W' , false, false),\n" +
-                                    "('X' , false, false),\n" +
-                                    "('Y' , false, false),\n" +
-                                    "('Z' , false, false),";
-        String queryInsertConfig = " INSERT INTO configuracion (sonido, color, partidaIniciada) VALUES ('sonido1.mp3', '#ccc', false)";
-        String query = queryCreateConfiguraciones + queryCreateLetras /*+ queryInsertLetras + queryInsertConfig*/;
-        sqLiteDatabase.execSQL(query);
+        String queryCreateConfiguraciones = "CREATE TABLE configuraciones (id integer PRIMARY KEY AUTOINCREMENT, sonido int, color text, partidaIniciada bit)";
+        String queryCreateLetras = " CREATE TABLE letras (letra varchar(1) PRIMARY KEY, isVisualized bit, isCompleted bit, nroLetra integer)";
+        String queryInsertLetras = " INSERT INTO letras (letra, isVisualized, isCompleted, nroLetra) " +
+                                    "VALUES " +
+                                    "('A' , 0, 0, 1)," +
+                                    "('B' , 0, 0, 2)," +
+                                    "('C' , 0, 0, 3)," +
+                                    "('D' , 0, 0, 4)," +
+                                    "('E' , 0, 0, 5)," +
+                                    "('F' , 0, 0, 6)," +
+                                    "('G' , 0, 0, 7)," +
+                                    "('H' , 0, 0, 8)," +
+                                    "('I' , 0, 0, 9)," +
+                                    "('J' , 0, 0, 10)," +
+                                    "('K' , 0, 0, 11)," +
+                                    "('L' , 0, 0, 12)," +
+                                    "('M' , 0, 0, 13)," +
+                                    "('N' , 0, 0, 14)," +
+                                    "('Ñ' , 0, 0, 15)," +
+                                    "('O' , 0, 0, 16)," +
+                                    "('P' , 0, 0, 17)," +
+                                    "('Q' , 0, 0, 18)," +
+                                    "('R' , 0, 0, 19)," +
+                                    "('S' , 0, 0, 20)," +
+                                    "('T' , 0, 0, 21)," +
+                                    "('U' , 0, 0, 22)," +
+                                    "('V' , 0, 0, 23)," +
+                                    "('W' , 0, 0, 24)," +
+                                    "('X' , 0, 0, 25)," +
+                                    "('Y' , 0, 0, 26)," +
+                                    "('Z' , 0, 0, 27)";
+        String queryInsertConfig = " INSERT INTO configuraciones (sonido, color, partidaIniciada) VALUES (-1, \"#F9E79F\", 0)";
+        sqLiteDatabase.execSQL(queryCreateConfiguraciones);
+        sqLiteDatabase.execSQL(queryInsertConfig);
+        sqLiteDatabase.execSQL(queryCreateLetras);
+        sqLiteDatabase.execSQL(queryInsertLetras);
+
     }
 
     @Override
