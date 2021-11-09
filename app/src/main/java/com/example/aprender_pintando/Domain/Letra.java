@@ -50,6 +50,16 @@ public class Letra {
         return this.Visualizada;
     }
 
+    public void setCompletada(boolean completa)
+    {
+        this.Completa = completa;
+    }
+
+    public boolean getCompletada()
+    {
+        return this.Completa;
+    }
+
     @Override
     public String toString() {
         return "Letra: " + Letra.toString();

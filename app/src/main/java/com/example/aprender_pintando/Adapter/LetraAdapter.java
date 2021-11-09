@@ -1,6 +1,7 @@
 package com.example.aprender_pintando.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,13 @@ public class LetraAdapter extends BaseAdapter {
 
         ImageView imagen = (ImageView) view.findViewById(R.id.imagen);
         imagen.setImageResource(getItem(position).getUrl());
+
+        if(getItem(position).getVisualizada())
+            imagen.setBackgroundColor(Color.parseColor(context.getString(R.string.isVisualized)));
+
+        if(getItem(position).getCompletada())
+            imagen.setBackgroundColor(Color.parseColor(context.getString(R.string.isCompleted)));
+
         return view;
     }
 }
