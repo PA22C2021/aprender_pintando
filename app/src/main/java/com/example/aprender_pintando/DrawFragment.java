@@ -73,6 +73,7 @@ public class DrawFragment extends Fragment {
         });
 
         draw.SetStroke(100);
+        draw.SetColor(Color.CYAN);
         return draw;
     }
 
