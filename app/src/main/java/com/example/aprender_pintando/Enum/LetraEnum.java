@@ -2,7 +2,7 @@ package com.example.aprender_pintando.Enum;
 
 public enum LetraEnum {
     A,
-/*    B,
+    B,
     C,
     D,
     E,
@@ -26,6 +26,6 @@ public enum LetraEnum {
     V,
     W,
     X,
-    Y,*/
+    Y,
     Z
 }
