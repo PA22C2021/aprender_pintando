@@ -30,7 +30,6 @@ public class DrawFragment extends Fragment {
     ProgressBar progressBar;
     ImageView imageLetra;
     ImageButton btnReiniciar, btnTerminar;
-    SeekBar seekBar;
     MotorJuego motorJuego;
 
     public DrawFragment() {

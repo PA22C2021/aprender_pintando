@@ -1,24 +1,17 @@
 package com.example.aprender_pintando.Domain;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.view.View;
 
 import com.example.aprender_pintando.Configuracion.Configuracion;
-import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
-import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
+import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
 import com.example.aprender_pintando.R;
 
 public abstract class ColorBD {
 
     public static int getColor(View view){
-        ConfiguracionDAO cfgDAO = new ConfiguracionDAO();
-        cfgDAO.setContext(view.getContext());
-        Configuracion cfg = cfgDAO.getConfiguracion();
+        ConfiguracionCtrl cfgCtl = new ConfiguracionCtrl(view.getContext());
+        Configuracion cfg = cfgCtl.getConfiguracion();
         int ret;
 
         if(cfg.getColorConfig() != null){
@@ -57,8 +50,7 @@ public abstract class ColorBD {
     }
 
     public static void guardarColor(int color, View view){
-        ConfiguracionDAO cfgDAO = new ConfiguracionDAO();
-        cfgDAO.setContext(view.getContext());
-        cfgDAO.actualizarColorConfiguracion(view.getContext().getString(color));
+        ConfiguracionCtrl cfgCtl = new ConfiguracionCtrl(view.getContext());
+        cfgCtl.actualizarColorConfiguracion(view.getContext().getString(color));
     }
 }

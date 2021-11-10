@@ -13,8 +13,8 @@ import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
 
 public class MainActivity extends BaseActivity  {
 
-
-    ImageButton btn_play, btn_continuar, btn_grilla, btn_config;
+    ConfiguracionCtrl cfgCtrl;
+    ImageButton btn_play, btn_grilla, btn_config;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +24,11 @@ public class MainActivity extends BaseActivity  {
         AdminSQLiteOpenHelper db = new AdminSQLiteOpenHelper(this, "aprender_pintando", null , 1);
         Log.d("db ------ " , db.toString());
 
-        /*ConfiguracionCtrl cfgCtrl = new ConfiguracionCtrl(this);
+        cfgCtrl = new ConfiguracionCtrl(this);
         Configuracion cfg = cfgCtrl.getConfiguracion();
 
         if(cfg.getSonido() != -1){ iniciarSonidoConfig(cfg.getSonido());}
-        else { iniciarSonidoAleatorio(); }*/
+        else { iniciarSonidoAleatorio(); }
     }
     @Override
     protected int getLayoutResourceId(){

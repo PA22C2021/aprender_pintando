@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class LetraDAO {
 
     public static int MAX_NRO_LETRA = 27;
@@ -38,7 +40,7 @@ public class LetraDAO {
 
     public Letra getSiguienteLetra (int nroLetra){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this._context, "aprender_pintando", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+        SQLiteDatabase db = admin.getReadableDatabase();
 
         int nroSiguienteLetra = nroLetra + 1;
         String query = "SELECT letra FROM letras WHERE nroLetra = " + nroSiguienteLetra;
@@ -52,6 +54,26 @@ public class LetraDAO {
 
 
         return l;
+    }
+
+    public ArrayList<Letra> getTodasLasLetras (){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this._context, "aprender_pintando", null, 1);
+        SQLiteDatabase db = admin.getReadableDatabase();
+        Cursor fila = db.rawQuery("SELECT * FROM letras", null);
+        fila.moveToFirst();
+
+        ArrayList<Letra> listado = new ArrayList<Letra>();
+
+        while (fila.moveToNext()) {
+
+            String letra = fila.getString(0);
+            boolean isVisualized = fila.getString(1) == "false" ? false : true ;
+            boolean isCompleted = fila.getString(2) == "false" ? false : true;
+            int _nroLetra = Integer.parseInt(fila.getString(3));
+
+            listado.add(new Letra(letra,isVisualized,isCompleted,_nroLetra));
+        }
+        return listado;
     }
 
 }

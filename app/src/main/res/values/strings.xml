@@ -4,32 +4,32 @@
     <!-- IMAGENES LETRAS-->
     <string-array name="imagenesLetras">
         <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
-        <item>@drawable/letra_a</item>
+        <item>@drawable/letra_b</item>
+        <item>@drawable/letra_c</item>
+        <item>@drawable/letra_d</item>
+        <item>@drawable/letra_e</item>
+        <item>@drawable/letra_f</item>
+        <item>@drawable/letra_g</item>
+        <item>@drawable/letra_h</item>
+        <item>@drawable/letra_i</item>
+        <item>@drawable/letra_j</item>
+        <item>@drawable/letra_k</item>
+        <item>@drawable/letra_l</item>
+        <item>@drawable/letra_m</item>
+        <item>@drawable/letra_n</item>
+        <item>@drawable/letra_n2</item>
+        <item>@drawable/letra_o</item>
+        <item>@drawable/letra_p</item>
+        <item>@drawable/letra_q</item>
+        <item>@drawable/letra_r</item>
+        <item>@drawable/letra_s</item>
+        <item>@drawable/letra_t</item>
+        <item>@drawable/letra_u</item>
+        <item>@drawable/letra_v</item>
+        <item>@drawable/letra_w</item>
+        <item>@drawable/letra_x</item>
+        <item>@drawable/letra_y</item>
+        <item>@drawable/letra_z</item>
     </string-array>
 
     <!--colores-->

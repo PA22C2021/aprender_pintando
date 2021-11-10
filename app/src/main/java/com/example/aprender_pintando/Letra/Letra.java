@@ -1,6 +1,6 @@
 package com.example.aprender_pintando.Letra;
 
-public class Letra extends LetraDAO{
+public class Letra extends LetraDAO {
 
     private String letra;
     private boolean isVisualized;

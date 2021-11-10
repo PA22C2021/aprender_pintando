@@ -2,30 +2,28 @@ package com.example.aprender_pintando;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.aprender_pintando.Configuracion.Configuracion;
 import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
-import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
 import com.example.aprender_pintando.Domain.ColorBD;
 
 public class SettingsActivity extends BaseActivity  {
 
-    ConfiguracionDAO cfgDAO = new ConfiguracionDAO();
+    ConfiguracionCtrl cfgCtl;
     ImageView screen;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        cfgDAO.setContext(this);
+        cfgCtl  = new ConfiguracionCtrl(this);
         int color = getCurrentColorOfDB();
         screen = (ImageView) findViewById(R.id.template_screen);
         screen.setBackgroundColor(color);
     }
 
     private int getCurrentColorOfDB() {
-        Configuracion cfg = cfgDAO.getConfiguracion();
+        Configuracion cfg = cfgCtl.getConfiguracion();
         return Color.parseColor(cfg.getColorConfig());
     }
 
@@ -49,7 +47,6 @@ public class SettingsActivity extends BaseActivity  {
 
     public void setearFondoPantalla(View view){
         int color = Integer.parseInt(view.getTag().toString());
-        ConfiguracionCtrl cfg  = new ConfiguracionCtrl(this);
         switch (color){
             case 1:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen01)));
@@ -78,7 +75,6 @@ public class SettingsActivity extends BaseActivity  {
             default:
                 throw new IllegalStateException("Unexpected value: " + color);
         }
-
         ColorBD.guardarColor(color, view);
     }
 }

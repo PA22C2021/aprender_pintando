@@ -8,7 +8,7 @@ public class Letra {
     private int UrlImagen;
     private boolean Completa = false;
     private boolean Visualizada = false;
-    private LetraEnum Letra = LetraEnum.A;
+    private LetraEnum Letra;
 
     public Letra(int resourceId)
     {
