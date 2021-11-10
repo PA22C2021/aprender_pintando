@@ -6,18 +6,29 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.aprender_pintando.Configuracion.Configuracion;
 import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
+import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
 
 public class SettingsActivity extends BaseActivity  {
 
-
+    ConfiguracionDAO cfgDAO = new ConfiguracionDAO();
     ImageView screen;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        cfgDAO.setContext(this);
+        int color = getCurrentColorOfDB();
         screen = (ImageView) findViewById(R.id.template_screen);
+        screen.setBackgroundColor(color);
     }
+
+    private int getCurrentColorOfDB() {
+        Configuracion cfg = cfgDAO.getConfiguracion();
+
+        return Color.parseColor(cfg.getColorConfig());
+    }
+
     @Override
     protected int getLayoutResourceId(){
         return R.layout.activity_settings;

@@ -106,19 +106,22 @@ public class ConfiguracionDAO {
     public Configuracion getConfiguracion(){
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+        SQLiteDatabase db = admin.getReadableDatabase();
 
         String query = "SELECT * FROM configuraciones WHERE id = 1";
         Cursor fila = db.rawQuery(query, null);
 
-        int sonido = Integer.parseInt(fila.getString(1));
-        String color = fila.getString(2);
-        boolean partidaIniciada = fila.getString(3) == "1" ? true : false;
-
-        Configuracion cfg = new Configuracion(sonido,color,partidaIniciada );
-
-        return cfg;
-
+        try{
+            fila.moveToFirst();
+            int sonido = Integer.parseInt(fila.getString(1));
+            String color = fila.getString(2);
+            boolean partidaIniciada = fila.getString(3) == "1" ? true : false;
+            Configuracion cfg = new Configuracion(sonido,color,partidaIniciada );
+            return cfg;
+        }
+        catch (Exception e){
+            throw e;
+        }
     }
 
 
