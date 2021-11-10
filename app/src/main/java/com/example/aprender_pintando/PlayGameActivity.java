@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
 import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
 import com.example.aprender_pintando.Domain.ColorBD;
 
@@ -13,8 +14,8 @@ public class PlayGameActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         ConstraintLayout view = findViewById(R.id.play_game);
         view.setBackgroundColor(ColorBD.getColor(view));
     }

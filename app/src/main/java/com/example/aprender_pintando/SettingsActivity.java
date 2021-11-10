@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.example.aprender_pintando.Configuracion.Configuracion;
 import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
 import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
+import com.example.aprender_pintando.Domain.ColorBD;
 
 public class SettingsActivity extends BaseActivity  {
 
@@ -25,7 +26,6 @@ public class SettingsActivity extends BaseActivity  {
 
     private int getCurrentColorOfDB() {
         Configuracion cfg = cfgDAO.getConfiguracion();
-
         return Color.parseColor(cfg.getColorConfig());
     }
 
@@ -53,25 +53,32 @@ public class SettingsActivity extends BaseActivity  {
         switch (color){
             case 1:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen01)));
+                color = R.string.screen01;
                 break;
             case 2:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen02)));
+                color = R.string.screen02;
                 break;
             case 3:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen03)));
+                color = R.string.screen03;
                 break;
             case 4:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen04)));
+                color = R.string.screen04;
                 break;
             case 5:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen05)));
-
+                color = R.string.screen05;
                 break;
             case 6:
                 screen.setBackgroundColor(Color.parseColor(getString(R.string.screen06)));
+                color = R.string.screen06;
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + color);
         }
+
+        ColorBD.guardarColor(color, view);
     }
 }

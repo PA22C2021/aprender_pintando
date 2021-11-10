@@ -2,52 +2,27 @@ package com.example.aprender_pintando.Domain;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.view.View;
 
+import com.example.aprender_pintando.Configuracion.Configuracion;
+import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
 import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
 import com.example.aprender_pintando.R;
 
 public abstract class ColorBD {
 
-    public static int getColorJuego(Context context){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "aprender_pintando", null, 1);
-        SQLiteDatabase _dbContext = admin.getReadableDatabase();
-
-        StringBuilder query = new StringBuilder();
-        query.append("select * from configuraciones");
-
-        Cursor fila = _dbContext.rawQuery(query.toString(), null);
-
-        int ret;
-
-        if(fila.moveToFirst()){
-            //TO DO: TOMAR EL COLOR DE LA DB
-            ret = R.string.screen04;
-        }else{
-            ret = R.string.screen01;
-            //throw new IllegalStateException("Unexpected value");
-        }
-
-        _dbContext.close();
-        return ret;
-    }
-
     public static int getColor(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(view.getContext(), "aprender_pintando", null, 1);
-        SQLiteDatabase _dbContext = admin.getReadableDatabase();
-
-        StringBuilder query = new StringBuilder();
-        query.append("select * from configuraciones");
-
-        Cursor fila = _dbContext.rawQuery(query.toString(), null);
-
+        ConfiguracionDAO cfgDAO = new ConfiguracionDAO();
+        cfgDAO.setContext(view.getContext());
+        Configuracion cfg = cfgDAO.getConfiguracion();
         int ret;
 
-        if(fila.moveToFirst()){
-            //TO DO: TOMAR EL COLOR DE LA DB
-            ret = R.string.screen04;
+        if(cfg.getColorConfig() != null){
+            ret = Color.parseColor(cfg.getColorConfig());
         }else{
             int rNumber = (int) Math.floor(Math.random()*(1-6+1)+6); // Valor entre M y N, ambos incluidos.
             int aux;
@@ -78,16 +53,12 @@ public abstract class ColorBD {
             guardarColor(aux, view);
             ret = aux;
         }
-
-        _dbContext.close();
         return ret;
     }
 
-    private static void guardarColor(int color, View view){
-        ContentValues val = new ContentValues();
-        val.put("Color", color);
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(view.getContext(), "aprender_pintando", null, 1);
-        admin.getWritableDatabase().insert("configuraciones", null, val);
-        admin.close();
+    public static void guardarColor(int color, View view){
+        ConfiguracionDAO cfgDAO = new ConfiguracionDAO();
+        cfgDAO.setContext(view.getContext());
+        cfgDAO.actualizarColorConfiguracion(view.getContext().getString(color));
     }
 }

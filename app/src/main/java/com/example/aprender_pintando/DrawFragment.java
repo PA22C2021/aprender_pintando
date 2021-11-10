@@ -50,7 +50,7 @@ public class DrawFragment extends Fragment {
         motorJuego = new MotorJuego();
 
         draw = new Draw(view.getContext());
-        draw.setBackgroundColor(ColorBD.getColorJuego(getContext()));
+        draw.setBackgroundColor(ColorBD.getColor(view));
 
         tvLetraActual = (TextView) getActivity().findViewById(R.id.lblLetra);
         btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
