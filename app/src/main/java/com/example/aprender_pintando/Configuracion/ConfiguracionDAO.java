@@ -11,16 +11,20 @@ import com.example.aprender_pintando.Letra.Letra;
 public class ConfiguracionDAO {
 
     private Context _context;
+    private static final String dbName = "aprender_pintando";
+    private static final int version = 1;
 
-    public void setContext(Context value){
-        this._context = value;
+    public ConfiguracionDAO(Context _context) {
+        this._context = _context;
+    }
+
+    public ConfiguracionDAO() {
     }
 
     public boolean actualizarConfiguracion(Configuracion config){
 
         boolean isOk = false;
-        // preguntar a los chicos
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getWritableDatabase();
         ContentValues configValores = new ContentValues();
 
@@ -44,8 +48,7 @@ public class ConfiguracionDAO {
     public boolean actualizarColorConfiguracion(String color){
 
         boolean isOk = false;
-        // preguntar a los chicos
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getWritableDatabase();
         ContentValues configValores = new ContentValues();
 
@@ -53,7 +56,7 @@ public class ConfiguracionDAO {
             configValores.put("color", color);
         }
 
-        int cant = db.update("configuraciones", configValores, "1=1", null);
+        int cant = db.update("configuraciones", configValores, null, null);
         if(cant == 1) {
             isOk = true;
         }
@@ -66,8 +69,7 @@ public class ConfiguracionDAO {
     public boolean actualizarSonidoConfiguracion(int sonido){
 
         boolean isOk = false;
-        // preguntar a los chicos
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getWritableDatabase();
         ContentValues configValores = new ContentValues();
 
@@ -75,7 +77,7 @@ public class ConfiguracionDAO {
             configValores.put("sonido", sonido);
         }
 
-        int cant = db.update("configuraciones", configValores, "1=1", null);
+        int cant = db.update("configuraciones", configValores, null, null);
         if(cant == 1) {
             isOk = true;
         }
@@ -94,7 +96,7 @@ public class ConfiguracionDAO {
 
         configValores.put("partidaIniciada", partidaIniciada);
 
-        int cant = db.update("configuraciones", configValores, "1=1", null);
+        int cant = db.update("configuraciones", configValores, null, null);
         if(cant == 1) {
             isOk = true;
         }

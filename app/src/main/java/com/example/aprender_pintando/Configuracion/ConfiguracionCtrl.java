@@ -5,61 +5,32 @@ import android.content.Context;
 public class ConfiguracionCtrl {
 
     private Context _context;
+    private ConfiguracionDAO configuracionDAO;
 
-    public ConfiguracionCtrl(Context context) {
-        setContext(context);
-    }
-
-    public void setContext(Context _context) {
+    public ConfiguracionCtrl(Context _context) {
         this._context = _context;
+        configuracionDAO = new ConfiguracionDAO(this._context);
     }
 
     public boolean actualizarConfiguracion (int sonido, String color, boolean partidaIniciada){
-        boolean isOk = false;
-
-        Configuracion cfg = new Configuracion(sonido, color, partidaIniciada) ;
-        cfg.setContext(_context);
-        isOk = cfg.actualizarConfiguracion(cfg);
-
-        return isOk;
+        return configuracionDAO.actualizarConfiguracion(new Configuracion(sonido, color, partidaIniciada));
     }
 
     public boolean actualizarColorConfiguracion (String color){
-        boolean isOk = false;
-
-        Configuracion cfg = new Configuracion() ;
-        cfg.setContext(_context);
-        isOk = cfg.actualizarColorConfiguracion(color);
-
-        return isOk;
+        return configuracionDAO.actualizarColorConfiguracion(color);
     }
 
 
     public boolean actualizarSonidoConfiguracion (int sonido){
-        boolean isOk = false;
-
-        Configuracion cfg = new Configuracion() ;
-        cfg.setContext(_context);
-        isOk = cfg.actualizarSonidoConfiguracion(sonido);
-
-        return isOk;
+        return configuracionDAO.actualizarSonidoConfiguracion(sonido);
     }
 
-
     public boolean actualizarPartidaIniciadaConfiguracion (boolean partidaIniciada){
-        boolean isOk = false;
-
-        Configuracion cfg = new Configuracion() ;
-        cfg.setContext(_context);
-        isOk = cfg.actualizarPartidaIniciadaConfiguracion(partidaIniciada);
-
-        return isOk;
+        return  configuracionDAO.actualizarPartidaIniciadaConfiguracion(partidaIniciada);
     }
 
     public Configuracion getConfiguracion  () {
-        Configuracion cfg = new Configuracion() ;
-        cfg.setContext(_context);
-        return cfg.getConfiguracion();
+        return configuracionDAO.getConfiguracion();
     }
 
 

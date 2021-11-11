@@ -23,9 +23,6 @@ public class MainActivity extends BaseActivity  {
         btn_play = (ImageButton) findViewById(R.id.btn_play);
         btn_grilla = (ImageButton) findViewById(R.id.btn_grid);
         btn_config = (ImageButton) findViewById(R.id.btn_settings);
-        AdminSQLiteOpenHelper db = new AdminSQLiteOpenHelper(this, "aprender_pintando", null , 1);
-        Log.d("db ------ " , db.toString());
-
         cfgCtrl = new ConfiguracionCtrl(this);
         lCtrl = new LetraCtrl(this);
         Configuracion cfg = cfgCtrl.getConfiguracion();
@@ -52,9 +49,6 @@ public class MainActivity extends BaseActivity  {
     }
 
     private void iniciarSonidoConfig(int sonido){
-
-        Log.d("var-sonido ------------------------------------------->"  , String.valueOf(sonido));
-        Log.d("var-sonido ------------------------------------------->"  , String.valueOf(sonidos));
         if(!sonidos[sonido].isPlaying()){
             for (int i = 0; i< 4; i++) {
                 if(sonidos[i].isPlaying())
