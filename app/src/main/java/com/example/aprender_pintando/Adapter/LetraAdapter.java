@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.example.aprender_pintando.Domain.Letra;
+import com.example.aprender_pintando.Letra.Letra;
 import com.example.aprender_pintando.R;
 
 import java.util.ArrayList;
@@ -46,12 +46,12 @@ public class LetraAdapter extends BaseAdapter {
         }
 
         ImageView imagen = (ImageView) view.findViewById(R.id.imagen);
-        imagen.setImageResource(getItem(position).getUrl());
+        imagen.setImageResource(getItem(position).getUrlImagen());
 
-        if(getItem(position).getVisualizada())
+        if(getItem(position).isVisualized())
             imagen.setBackgroundColor(Color.parseColor(context.getString(R.string.isVisualized)));
 
-        if(getItem(position).getCompletada())
+        if(getItem(position).isCompleted())
             imagen.setBackgroundColor(Color.parseColor(context.getString(R.string.isCompleted)));
 
         return view;

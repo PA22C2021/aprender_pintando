@@ -1,6 +1,7 @@
 package com.example.aprender_pintando.Domain;
 
 import com.example.aprender_pintando.Enum.LetraEnum;
+import com.example.aprender_pintando.Letra.Letra;
 
 import java.util.Arrays;
 
@@ -12,28 +13,17 @@ public class MotorJuego {
     public MotorJuego()
     {
         //TODO: ver como traer de la db y limpiar campos
-        this.Letra = new Letra(LetraEnum.F);
+        this.Letra = new Letra();
     }
 
     // Si estamos leyendo de la base hay que enviar la letra por parametro.
     public MotorJuego(LetraEnum letraEnum)
     {
-         this.Letra = new Letra(letraEnum);
+         this.Letra = new Letra();
     }
 
     public Letra LetraSiguiente()
     {
-        LetraEnum letra = Letra.getLetra();
-        int index = Arrays.asList(LetraEnum.values()).indexOf(letra);
-
-        if (index < (LetraEnum.values().length - 1))
-        {
-            letra = LetraEnum.values()[index+1];
-
-            Letra = new Letra(letra);
-            return Letra;
-        }
-
         return null;
     }
 }

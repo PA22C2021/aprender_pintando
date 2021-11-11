@@ -50,21 +50,10 @@ public class LetraCtrl {
         return letra;
     }
 
-    public ArrayList<com.example.aprender_pintando.Domain.Letra> getTodasLasLetras () {
+    public ArrayList<Letra> getTodasLasLetras () {
         LetraDAO lDao = new LetraDAO();
         lDao.setContext(this._context);
-        ArrayList<Letra> letras = lDao.getTodasLasLetras();
-        ArrayList<com.example.aprender_pintando.Domain.Letra> retList = new ArrayList<com.example.aprender_pintando.Domain.Letra>();
-
-        for (Letra l : letras) {
-            com.example.aprender_pintando.Domain.Letra letra = new com.example.aprender_pintando.Domain.Letra(LetraEnum.F);
-            letra.setCompletada(l.isCompleted());
-            letra.setVisualizada(l.isVisualized());
-            letra.setNroLetra(l.getNroLetra());
-            retList.add(letra);
-        }
-
-        return retList;
+        return lDao.getTodasLasLetras();
     }
 }
 

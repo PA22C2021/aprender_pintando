@@ -1,12 +1,14 @@
 package com.example.aprender_pintando.Letra;
 
+import com.example.aprender_pintando.Enum.LetraEnum;
+import com.example.aprender_pintando.Helper.LetrasHelper;
+
 public class Letra extends LetraDAO {
 
     private String letra;
-    private boolean isVisualized;
-    private boolean isCompleted;
+    private boolean isVisualized = false;
+    private boolean isCompleted = false;
     private int nroLetra;
-
 
     public Letra(String letra, boolean isVisualized, boolean isCompleted, int nroLetra) {
         this.letra = letra;
@@ -18,6 +20,9 @@ public class Letra extends LetraDAO {
     public Letra() {
     }
 
+    public int getUrlImagen(){
+        return LetrasHelper.UrlLetra(this.letra);
+    }
 
     public String getLetra() {
         return letra;

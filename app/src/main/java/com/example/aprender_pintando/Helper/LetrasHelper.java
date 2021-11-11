@@ -5,91 +5,91 @@ import com.example.aprender_pintando.R;
 
 public abstract class LetrasHelper
 {
-    public static int UrlLetra(LetraEnum letraEnum)
+    public static int UrlLetra(String letra)
     {
         int url = 0;
 
-        switch (letraEnum)
+        switch (letra)
         {
-            case A:
+            case "A":
                 url = R.drawable.letra_a;
                 break;
-            case B:
+            case "B":
                 url = R.drawable.letra_b;
                 break;
-            case C:
+            case "C":
                 url = R.drawable.letra_c;
                 break;
-            case D:
+            case "D":
                 url = R.drawable.letra_d;
                 break;
-            case E:
+            case "E":
                 url = R.drawable.letra_e;
                 break;
-            case F:
+            case "F":
                 url = R.drawable.letra_f;
                 break;
-            case G:
+            case "G":
                 url = R.drawable.letra_g;
                 break;
-            case H:
+            case "H":
                 url = R.drawable.letra_h;
                 break;
-            case I:
+            case "I":
                 url = R.drawable.letra_i;
                 break;
-            case J:
+            case "J":
                 url = R.drawable.letra_j;
                 break;
-            case K:
+            case "K":
                 url = R.drawable.letra_k;
                 break;
-            case L:
+            case "L":
                 url = R.drawable.letra_l;
                 break;
-            case M:
+            case "M":
                 url = R.drawable.letra_m;
                 break;
-            case N:
+            case "N":
                 url = R.drawable.letra_n;
                 break;
-            case Ñ:
+            case "Ñ":
                 url = R.drawable.letra_n2;
                 break;
-            case O:
+            case "O":
                 url = R.drawable.letra_o;
                 break;
-            case P:
+            case "P":
                 url = R.drawable.letra_p;
                 break;
-            case Q:
+            case "Q":
                 url = R.drawable.letra_q;
                 break;
-            case R:
+            case "R":
                 url = R.drawable.letra_r;
                 break;
-            case S:
+            case "S":
                 url = R.drawable.letra_s;
                 break;
-            case T:
+            case "T":
                 url = R.drawable.letra_t;
                 break;
-            case U:
+            case "U":
                 url = R.drawable.letra_u;
                 break;
-            case V:
+            case "V":
                 url = R.drawable.letra_v;
                 break;
-            case W:
+            case "W":
                 url = R.drawable.letra_w;
                 break;
-            case X:
+            case "X":
                 url = R.drawable.letra_x;
                 break;
-            case Y:
+            case "Y":
                 url = R.drawable.letra_y;
                 break;
-            case Z:
+            case "Z":
                 url = R.drawable.letra_z;
                 break;
         }

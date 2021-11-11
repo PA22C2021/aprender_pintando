@@ -1,6 +1,6 @@
 package com.example.aprender_pintando;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,17 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
 import com.example.aprender_pintando.Domain.ColorBD;
 import com.example.aprender_pintando.Domain.Draw;
-import com.example.aprender_pintando.Domain.Letra;
 import com.example.aprender_pintando.Domain.MotorJuego;
-import com.example.aprender_pintando.Enum.LetraEnum;
+import com.example.aprender_pintando.Letra.Letra;
 
 public class DrawFragment extends Fragment {
 
@@ -81,14 +78,13 @@ public class DrawFragment extends Fragment {
 
         if (letra != null)
         {
-            imageLetra.setImageResource(letra.getUrl());
+            imageLetra.setImageResource(letra.getUrlImagen());
             tvLetraActual.setText(letra.toString());
         }
         else
         {
-            // TODO: Acá disparar el activity de resultados.
-            imageLetra.setImageResource(R.drawable.grid);
-            tvLetraActual.setText("Gracias por jugar");
+            Intent intent = new Intent(view.getContext(), ProgressGridActivity.class);
+            startActivity(intent);
         }
     }
 
