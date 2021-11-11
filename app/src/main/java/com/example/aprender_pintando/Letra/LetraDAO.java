@@ -22,10 +22,10 @@ public class LetraDAO {
 
         boolean isOk = false;
         // preguntar a los chicos
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this._context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
         ContentValues letraValores = new ContentValues();
-        // letraValores.put("letra", l.getLetra());
+
         letraValores.put("isVisualized", l.isVisualized());
         letraValores.put("isCompleted", l.isCompleted());
 
@@ -34,12 +34,13 @@ public class LetraDAO {
             isOk = true;
         }
 
+        db.close();
         return isOk;
 
     }
 
     public Letra getSiguienteLetra (int nroLetra){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this._context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         int nroSiguienteLetra = nroLetra + 1;
@@ -51,11 +52,13 @@ public class LetraDAO {
         boolean isCompleted = fila.getInt(2) == 0 ? false : true;
         int _nroLetra = fila.getInt(3);
 
+        fila.close();
+        db.close();
         return new Letra(letra,isVisualized,isCompleted,_nroLetra);
     }
 
     public ArrayList<Letra> getTodasLasLetras (){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this._context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
         Cursor fila = db.rawQuery("SELECT * FROM letras", null);
         ArrayList<Letra> listado = new ArrayList<Letra>();
@@ -68,6 +71,8 @@ public class LetraDAO {
 
             listado.add(new Letra(letra,isVisualized,isCompleted,_nroLetra));
         }
+        fila.close();
+        db.close();
         return listado;
     }
 

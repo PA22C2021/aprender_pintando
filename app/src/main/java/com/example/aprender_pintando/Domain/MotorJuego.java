@@ -32,6 +32,8 @@ public class MotorJuego {
 
     public Letra LetraSiguiente()
     {
+        this.Letra.setVisualized(true);
+        this.Letra.actualizarLetra(this.Letra);
         return lCtrl.getSiguienteLetra(Letra.getNroLetra());
     }
 }

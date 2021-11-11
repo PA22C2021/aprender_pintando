@@ -36,7 +36,7 @@ public class ConfiguracionDAO {
         if(cant == 1) {
             isOk = true;
         }
-
+        db.close();
         return isOk;
 
     }
@@ -57,7 +57,7 @@ public class ConfiguracionDAO {
         if(cant == 1) {
             isOk = true;
         }
-
+        db.close();
         return isOk;
 
     }
@@ -79,7 +79,7 @@ public class ConfiguracionDAO {
         if(cant == 1) {
             isOk = true;
         }
-
+        db.close();
         return isOk;
 
     }
@@ -99,8 +99,8 @@ public class ConfiguracionDAO {
             isOk = true;
         }
 
+        db.close();
         return isOk;
-
     }
 
     public Configuracion getConfiguracion(){
@@ -117,6 +117,8 @@ public class ConfiguracionDAO {
             String color = fila.getString(2);
             boolean partidaIniciada = fila.getString(3) == "1" ? true : false;
             Configuracion cfg = new Configuracion(sonido,color,partidaIniciada );
+            fila.close();
+            db.close();
             return cfg;
         }
         catch (Exception e){
