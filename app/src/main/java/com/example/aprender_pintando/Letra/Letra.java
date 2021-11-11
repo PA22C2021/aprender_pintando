@@ -1,6 +1,5 @@
 package com.example.aprender_pintando.Letra;
 
-import com.example.aprender_pintando.Enum.LetraEnum;
 import com.example.aprender_pintando.Helper.LetrasHelper;
 
 public class Letra extends LetraDAO {

@@ -3,9 +3,6 @@ package com.example.aprender_pintando.Letra;
 import static com.example.aprender_pintando.Letra.LetraDAO.MAX_NRO_LETRA;
 
 import android.content.Context;
-
-import com.example.aprender_pintando.Enum.LetraEnum;
-
 import java.util.ArrayList;
 
 public class LetraCtrl {
