@@ -4,10 +4,10 @@ import com.example.aprender_pintando.Helper.LetrasHelper;
 
 public class Letra extends LetraDAO {
 
-    private String letra;
+    private String letra = "A";
     private boolean isVisualized = false;
     private boolean isCompleted = false;
-    private int nroLetra;
+    private int nroLetra = 1;
 
     public Letra(String letra, boolean isVisualized, boolean isCompleted, int nroLetra) {
         this.letra = letra;
@@ -53,5 +53,10 @@ public class Letra extends LetraDAO {
 
     public void setNroLetra(int nroLetra) {
         this.nroLetra = nroLetra;
+    }
+
+    @Override
+    public String toString() {
+        return "Letra: " + this.letra;
     }
 }

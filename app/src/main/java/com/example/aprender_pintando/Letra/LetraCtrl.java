@@ -43,8 +43,7 @@ public class LetraCtrl {
     public Letra getSiguienteLetra (int nroLetra) {
         LetraDAO lDao = new LetraDAO();
         lDao.setContext(this._context);
-        Letra letra = lDao.getSiguienteLetra(nroLetra);
-        return letra;
+        return lDao.getSiguienteLetra(nroLetra);
     }
 
     public ArrayList<Letra> getTodasLasLetras () {

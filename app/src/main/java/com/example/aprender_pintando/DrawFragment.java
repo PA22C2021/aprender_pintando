@@ -43,7 +43,7 @@ public class DrawFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
 
-        motorJuego = new MotorJuego();
+        motorJuego = new MotorJuego(view.getContext());
 
         draw = new Draw(view.getContext());
         draw.setBackgroundColor(ColorBD.getColor(view));
@@ -80,6 +80,7 @@ public class DrawFragment extends Fragment {
         {
             imageLetra.setImageResource(letra.getUrlImagen());
             tvLetraActual.setText(letra.toString());
+            motorJuego.setLetra(letra);
         }
         else
         {

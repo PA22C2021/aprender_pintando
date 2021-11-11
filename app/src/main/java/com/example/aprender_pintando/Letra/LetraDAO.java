@@ -43,17 +43,15 @@ public class LetraDAO {
         SQLiteDatabase db = admin.getReadableDatabase();
 
         int nroSiguienteLetra = nroLetra + 1;
-        String query = "SELECT letra FROM letras WHERE nroLetra = " + nroSiguienteLetra;
-        Cursor fila = db.rawQuery(query, null);
+        Cursor fila = db.rawQuery("SELECT * FROM letras WHERE nroLetra = " + nroSiguienteLetra, null);
+        fila.moveToFirst();
+
         String letra = fila.getString(0);
-        boolean isVisualized = fila.getString(1) == "false" ? false : true ;
-        boolean isCompleted = fila.getString(2) == "false" ? false : true;
-        int _nroLetra = Integer.parseInt(fila.getString(3));
+        boolean isVisualized = fila.getInt(1) == 0 ? false : true;
+        boolean isCompleted = fila.getInt(2) == 0 ? false : true;
+        int _nroLetra = fila.getInt(3);
 
-        Letra l = new Letra(letra,isVisualized,isCompleted,_nroLetra);
-
-
-        return l;
+        return new Letra(letra,isVisualized,isCompleted,_nroLetra);
     }
 
     public ArrayList<Letra> getTodasLasLetras (){
