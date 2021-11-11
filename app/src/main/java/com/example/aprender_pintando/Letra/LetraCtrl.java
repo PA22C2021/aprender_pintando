@@ -47,9 +47,13 @@ public class LetraCtrl {
     }
 
     public Letra getSiguienteLetra (int nroLetra) {
-        LetraDAO lDao = new LetraDAO();
-        lDao.setContext(this._context);
-        return lDao.getSiguienteLetra(nroLetra);
+        if(nroLetra == MAX_NRO_LETRA){
+            return null;
+        }else {
+            LetraDAO lDao = new LetraDAO();
+            lDao.setContext(this._context);
+            return lDao.getSiguienteLetra(nroLetra);
+        }
     }
 
     public ArrayList<Letra> getTodasLasLetras () {
