@@ -13,16 +13,20 @@ public class LetraDAO {
 
     public static int MAX_NRO_LETRA = 27;
     private Context _context;
+    private static final String dbName = "aprender_pintando";
+    private static final int version = 1;
 
-    public void setContext(Context value){
-        this._context = value;
+    public LetraDAO() {
+    }
+
+    public LetraDAO(Context _context) {
+        this._context = _context;
     }
 
     public boolean actualizarLetra( Letra l){
 
         boolean isOk = false;
-        // preguntar a los chicos
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getWritableDatabase();
         ContentValues letraValores = new ContentValues();
 
@@ -40,8 +44,20 @@ public class LetraDAO {
 
     }
 
+    public void limpiarLetras(){
+
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        ContentValues letraValores = new ContentValues();
+
+        letraValores.put("isVisualized", false);
+        letraValores.put("isCompleted", false);
+
+        int cant = db.update("letras", letraValores, null, null);
+    }
+
     public Letra getSiguienteLetra (int nroLetra){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         int nroSiguienteLetra = nroLetra + 1;
@@ -59,7 +75,7 @@ public class LetraDAO {
     }
 
     public ArrayList<Letra> getTodasLasLetras (){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, "aprender_pintando", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getReadableDatabase();
         Cursor fila = db.rawQuery("SELECT * FROM letras", null);
         ArrayList<Letra> listado = new ArrayList<Letra>();

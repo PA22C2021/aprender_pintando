@@ -10,10 +10,12 @@ import android.widget.ImageButton;
 import com.example.aprender_pintando.Configuracion.Configuracion;
 import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
 import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
+import com.example.aprender_pintando.Letra.LetraCtrl;
 
 public class MainActivity extends BaseActivity  {
 
     ConfiguracionCtrl cfgCtrl;
+    LetraCtrl lCtrl;
     ImageButton btn_play, btn_grilla, btn_config;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends BaseActivity  {
         Log.d("db ------ " , db.toString());
 
         cfgCtrl = new ConfiguracionCtrl(this);
+        lCtrl = new LetraCtrl(this);
         Configuracion cfg = cfgCtrl.getConfiguracion();
 
         if(cfg.getSonido() != -1){ iniciarSonidoConfig(cfg.getSonido());}
@@ -66,6 +69,7 @@ public class MainActivity extends BaseActivity  {
 
     public void ComenzarJuego(View view)
     {
+        lCtrl.limpiarLetras();
         Intent intent = new Intent(view.getContext(), PlayGameActivity.class);
         startActivity(intent);
     }

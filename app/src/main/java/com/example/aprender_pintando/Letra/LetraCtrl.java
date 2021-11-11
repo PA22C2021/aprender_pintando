@@ -8,57 +8,30 @@ import java.util.ArrayList;
 public class LetraCtrl {
 
     private Context _context;
+    private LetraDAO lDao;
 
-    public LetraCtrl(Context context) {
-        setContext(context);
-    }
-
-    public void setContext(Context _context) {
+    public LetraCtrl(Context _context) {
         this._context = _context;
-    }
-
-    public LetraResponse updateAndGetSiguienteLetra (String letra, boolean isCompleted, boolean isVisualized, int nroLetra) {
-        Letra l = new Letra(letra, isCompleted, isVisualized, nroLetra);
-        boolean isOk = l.actualizarLetra(l);
-        LetraResponse ret = new LetraResponse();
-
-
-        if(isOk) {
-
-            if(l.getNroLetra() == MAX_NRO_LETRA){
-                // Si es la letra es la numero 27 (Z) entonces el juego finaliza (ver que hacer luego)
-                ret.setLetra(l);
-                ret.setGameFinished(true);
-            } else {
-                // Si es cualquier otra, se sigue normalmente
-                Letra siguienteLetra = this.getSiguienteLetra(l.getNroLetra());
-                ret.setLetra(siguienteLetra);
-                ret.setGameFinished(false);
-            }
-
-        }
-        return ret;
+        lDao = new LetraDAO(this._context);
     }
 
     public boolean actualizarLetra (Letra letra) {
-        LetraDAO lDao = new LetraDAO();
-        lDao.setContext(this._context);
         return lDao.actualizarLetra(letra);
+    }
+
+    public void limpiarLetras () {
+        lDao.limpiarLetras();
     }
 
     public Letra getSiguienteLetra (int nroLetra) {
         if(nroLetra == MAX_NRO_LETRA){
             return null;
         }else {
-            LetraDAO lDao = new LetraDAO();
-            lDao.setContext(this._context);
             return lDao.getSiguienteLetra(nroLetra);
         }
     }
 
     public ArrayList<Letra> getTodasLasLetras () {
-        LetraDAO lDao = new LetraDAO();
-        lDao.setContext(this._context);
         return lDao.getTodasLasLetras();
     }
 }
