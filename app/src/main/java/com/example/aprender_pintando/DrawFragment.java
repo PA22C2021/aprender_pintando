@@ -82,6 +82,7 @@ public class DrawFragment extends Fragment {
     public void TerminarButtonOnClick(View view)
     {
         draw.ClearDraw();
+        progressBar.setProgress(letra.getAllPixelesReferencias().size()/2);
         letra = motorJuego.LetraSiguiente();
 
         if (letra != null)
