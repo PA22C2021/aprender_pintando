@@ -7,6 +7,7 @@ public class Letra extends LetraDAO {
     private boolean isCompleted;
     private int nroLetra;
 
+
     public Letra(String letra, boolean isVisualized, boolean isCompleted, int nroLetra) {
         this.letra = letra;
         this.isVisualized = isVisualized;

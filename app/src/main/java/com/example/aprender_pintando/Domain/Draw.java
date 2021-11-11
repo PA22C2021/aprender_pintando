@@ -7,13 +7,17 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Draw extends View {
 
-    private int ColorPaint = Color.RED;
-    private int strokePaint = 35;
+    private int ColorPaint = Color.CYAN;
+    private int strokePaint = 180;
     private boolean isClean = true;
 
     private static Paint drawPaint;
@@ -21,6 +25,8 @@ public class Draw extends View {
     private Bitmap canvasBitmap;
     private Canvas drawCanvas;
     private Path drawPath;
+    private ArrayList<Cordenada> listaDePixeles;
+    private int cordenadasValidas;
 
     public Draw(Context context) {
         super(context);
@@ -32,7 +38,23 @@ public class Draw extends View {
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
+        this.cordenadasValidas = 0;
+        this.listaDePixeles = Cordenada.getAllPixelesReferencias();
+
     }
+
+    public void setCordenadasValidas(int cordenadasValidas) {
+        this.cordenadasValidas = cordenadasValidas;
+    }
+
+    public int getCordenadasValidas(){
+        return this.cordenadasValidas;
+    }
+
+    public ArrayList<Cordenada> getListaDePixeles(){
+        return this.listaDePixeles;
+    }
+
 
     //Tamaño asignado a la vista
     @Override
@@ -77,10 +99,51 @@ public class Draw extends View {
 
         isClean = false;
 
+        // Log.d("X: ",  touchX + "  - Y: " + touchY);
+
+        boolean termino = validarPixel(touchX,  touchY);
+
+        if(termino){
+            Log.d("No  lo puedo  creer", touchY + "");
+        }
+
+
+
         //repintar
         invalidate();
         return true;
     }
+
+    public boolean validarPixel (float touchX, float touchY){
+
+
+        for(Cordenada c : this.listaDePixeles){
+            float pixelWithMarginErrorXPlus = c.getX() + 90;
+            float pixelWithMarginErrorXMinus = c.getX() - 90;
+            float pixelWithMarginErrorYPlus = c.getY() + 90;
+            float pixelWithMarginErrorYMinus = c.getY() - 90;
+            if(touchX <= pixelWithMarginErrorXPlus && touchX >= pixelWithMarginErrorXMinus &&
+                    touchY <= pixelWithMarginErrorYPlus && touchY >= pixelWithMarginErrorYMinus
+            ){
+                if (!c.getCompleted()) {
+                    c.setCompleted(true);
+                    this.setCordenadasValidas(this.getCordenadasValidas() + 1);
+                    Log.d("Tildo  un pixel", this.getCordenadasValidas() + "");
+                    Log.d("Size", this.listaDePixeles.size() + "");
+                }
+            }
+        }
+
+        boolean estaCompleta =  false;
+
+        if(this.getCordenadasValidas() == this.listaDePixeles.size() ){
+            estaCompleta = true;
+        }
+
+        return estaCompleta;
+
+    }
+
 
     public boolean isClean()
     {
@@ -105,4 +168,5 @@ public class Draw extends View {
         strokePaint = stroke;
         drawPaint.setStrokeWidth(stroke);
     }
+
 }
