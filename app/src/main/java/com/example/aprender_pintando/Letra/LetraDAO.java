@@ -64,9 +64,9 @@ public class LetraDAO {
         while (fila.moveToNext()) {
 
             String letra = fila.getString(0);
-            boolean isVisualized = fila.getString(1) == "false" ? false : true ;
-            boolean isCompleted = fila.getString(2) == "false" ? false : true;
-            int _nroLetra = Integer.parseInt(fila.getString(3));
+            boolean isVisualized = fila.getInt(1) == 0 ? false : true;
+            boolean isCompleted = fila.getInt(2) == 0 ? false : true;
+            int _nroLetra = fila.getInt(3);
 
             listado.add(new Letra(letra,isVisualized,isCompleted,_nroLetra));
         }

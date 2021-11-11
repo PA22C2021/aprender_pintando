@@ -48,6 +48,8 @@ public class LetraAdapter extends BaseAdapter {
         ImageView imagen = (ImageView) view.findViewById(R.id.imagen);
         imagen.setImageResource(getItem(position).getUrlImagen());
 
+        imagen.setBackgroundColor(Color.parseColor(context.getString(R.string.notVisualized)));
+
         if(getItem(position).isVisualized())
             imagen.setBackgroundColor(Color.parseColor(context.getString(R.string.isVisualized)));
 

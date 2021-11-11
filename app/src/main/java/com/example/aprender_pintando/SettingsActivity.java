@@ -35,7 +35,6 @@ public class SettingsActivity extends BaseActivity  {
     public void setearSonido(View view){
         int sonido = Integer.parseInt(view.getTag().toString());
 
-
         if(rSonido != sonido){
             sonidos[rSonido].stop();
             sonidos[sonido].start();
