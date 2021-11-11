@@ -69,6 +69,13 @@ public class Draw extends View {
     {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
+
+        /*Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        paint.setColor(Color.BLACK);
+        int ancho = canvas.getWidth();
+        canvas.drawRect(1, 1, 12, 20, paint);*/
     }
 
     @Override
@@ -96,6 +103,8 @@ public class Draw extends View {
             default:
                 return false;
         }
+
+        Log.d("posiciones en pantalla","onTouchEvent: X:" + touchX + " Y:" + touchY);
 
         isClean = false;
 

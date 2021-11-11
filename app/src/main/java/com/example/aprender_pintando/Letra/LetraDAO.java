@@ -60,10 +60,7 @@ public class LetraDAO {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this._context, "aprender_pintando", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
         Cursor fila = db.rawQuery("SELECT * FROM letras", null);
-        fila.moveToFirst();
-
         ArrayList<Letra> listado = new ArrayList<Letra>();
-
         while (fila.moveToNext()) {
 
             String letra = fila.getString(0);
