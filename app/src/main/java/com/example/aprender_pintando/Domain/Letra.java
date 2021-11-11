@@ -9,16 +9,8 @@ public class Letra {
     private boolean Completa = false;
     private boolean Visualizada = false;
     private LetraEnum Letra;
+    private int NroLetra;
 
-    public Letra(int resourceId)
-    {
-        UrlImagen = LetrasHelper.UrlLetra(Letra);
-    }
-
-    public Letra()
-    {
-
-    }
     public Letra(LetraEnum letra)
     {
         this.Letra = letra;
@@ -29,6 +21,7 @@ public class Letra {
     {
         return UrlImagen;
     }
+
 
     public void setLetra(LetraEnum letra)
     {
@@ -60,9 +53,22 @@ public class Letra {
         return this.Completa;
     }
 
+    public void setNroLetra(int nroLetra)
+    {
+        this.NroLetra = nroLetra;
+    }
+
+    public int getNroLetra()
+    {
+        return this.NroLetra;
+    }
+
     @Override
     public String toString() {
         return "Letra: " + Letra.toString();
     }
 
+    public void setUrlImage(int resourceId) {
+        this.UrlImagen = resourceId;
+    }
 }

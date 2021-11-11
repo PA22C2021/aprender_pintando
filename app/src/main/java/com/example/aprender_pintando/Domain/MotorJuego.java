@@ -11,7 +11,8 @@ public class MotorJuego {
     // Si estamos comenzando el juego llamando a este constructor alcanza, inicia en la letra A.
     public MotorJuego()
     {
-        this.Letra = new Letra();
+        //TODO: ver como traer de la db y limpiar campos
+        this.Letra = new Letra(LetraEnum.F);
     }
 
     // Si estamos leyendo de la base hay que enviar la letra por parametro.
