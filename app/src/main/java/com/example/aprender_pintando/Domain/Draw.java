@@ -10,8 +10,6 @@ import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Draw extends View {
@@ -40,7 +38,6 @@ public class Draw extends View {
         canvasPaint = new Paint(Paint.DITHER_FLAG);
         this.cordenadasValidas = 0;
         this.listaDePixeles = Cordenada.getAllPixelesReferencias();
-
     }
 
     public void setCordenadasValidas(int cordenadasValidas) {
@@ -139,6 +136,8 @@ public class Draw extends View {
         boolean estaCompleta =  false;
 
         if(this.getCordenadasValidas() == this.listaDePixeles.size() ){
+            // TODO: mostrar imagen
+
             estaCompleta = true;
         }
 

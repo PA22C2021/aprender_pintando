@@ -74,6 +74,8 @@ public class DrawFragment extends Fragment {
 
         this.letra.setVisualized(true);
         this.lCtrl.actualizarLetra(this.letra);
+
+        progressBar.setMax(letra.getAllPixelesReferencias().size());
         return draw;
     }
 
