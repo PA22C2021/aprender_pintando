@@ -29,7 +29,8 @@ public class LetraDAO {
         letraValores.put("isVisualized", l.isVisualized());
         letraValores.put("isCompleted", l.isCompleted());
 
-        int cant = db.update("letras", letraValores, "letra="+l.getLetra(), null);
+        int cant = db.update("letras", letraValores, "letra = ?", new String[]{l.getLetra()});
+
         if(cant == 1) {
             isOk = true;
         }

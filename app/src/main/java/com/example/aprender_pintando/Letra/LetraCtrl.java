@@ -40,6 +40,12 @@ public class LetraCtrl {
         return ret;
     }
 
+    public boolean actualizarLetra (Letra letra) {
+        LetraDAO lDao = new LetraDAO();
+        lDao.setContext(this._context);
+        return lDao.actualizarLetra(letra);
+    }
+
     public Letra getSiguienteLetra (int nroLetra) {
         LetraDAO lDao = new LetraDAO();
         lDao.setContext(this._context);
