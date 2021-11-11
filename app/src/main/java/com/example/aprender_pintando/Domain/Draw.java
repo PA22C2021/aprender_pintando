@@ -10,6 +10,11 @@ import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.example.aprender_pintando.Coordenadas.CoordenadasLetra;
+import com.example.aprender_pintando.Coordenadas.CoordenadasValidator;
+import com.example.aprender_pintando.DrawFragment;
+
 import java.util.ArrayList;
 
 public class Draw extends View {
@@ -23,8 +28,23 @@ public class Draw extends View {
     private Bitmap canvasBitmap;
     private Canvas drawCanvas;
     private Path drawPath;
-    private ArrayList<Cordenada> listaDePixeles;
-    private int cordenadasValidas;
+    private CoordenadasValidator coordValidator;
+    private CoordenadasLetra coordLetra;
+
+    public void setCoordLetra(CoordenadasLetra coordLetra) {
+        this.coordLetra = coordLetra;
+    }
+    public void setCoordValidator(CoordenadasValidator coordValidator) {
+        this.coordValidator = coordValidator;
+    }
+
+    public CoordenadasValidator getCoordValidator() {
+        return coordValidator;
+    }
+
+    public CoordenadasLetra getCoordLetra() {
+        return coordLetra;
+    }
 
     public Draw(Context context) {
         super(context);
@@ -36,22 +56,8 @@ public class Draw extends View {
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
-        this.cordenadasValidas = 0;
-        this.listaDePixeles = Cordenada.getAllPixelesReferencias();
+        coordValidator = new CoordenadasValidator();
     }
-
-    public void setCordenadasValidas(int cordenadasValidas) {
-        this.cordenadasValidas = cordenadasValidas;
-    }
-
-    public int getCordenadasValidas(){
-        return this.cordenadasValidas;
-    }
-
-    public ArrayList<Cordenada> getListaDePixeles(){
-        return this.listaDePixeles;
-    }
-
 
     //Tamaño asignado a la vista
     @Override
@@ -94,55 +100,21 @@ public class Draw extends View {
                 return false;
         }
 
-        Log.d("posiciones en pantalla","onTouchEvent: X:" + touchX + " Y:" + touchY);
-
         isClean = false;
 
-        // Log.d("X: ",  touchX + "  - Y: " + touchY);
-
-        boolean termino = validarPixel(touchX,  touchY);
+        boolean termino = this.coordValidator.validarCoordenadas(touchX, touchY);
 
         if(termino){
-            Log.d("No  lo puedo  creer", touchY + "");
+            this.coordLetra.setCompleted(true);
         }
-
-
 
         //repintar
         invalidate();
         return true;
     }
 
-    public boolean validarPixel (float touchX, float touchY){
-
-
-        for(Cordenada c : this.listaDePixeles){
-            float pixelWithMarginErrorXPlus = c.getX() + 90;
-            float pixelWithMarginErrorXMinus = c.getX() - 90;
-            float pixelWithMarginErrorYPlus = c.getY() + 90;
-            float pixelWithMarginErrorYMinus = c.getY() - 90;
-            if(touchX <= pixelWithMarginErrorXPlus && touchX >= pixelWithMarginErrorXMinus &&
-                    touchY <= pixelWithMarginErrorYPlus && touchY >= pixelWithMarginErrorYMinus
-            ){
-                if (!c.getCompleted()) {
-                    c.setCompleted(true);
-                    this.setCordenadasValidas(this.getCordenadasValidas() + 1);
-                    Log.d("Tildo  un pixel", this.getCordenadasValidas() + "");
-                    Log.d("Size", this.listaDePixeles.size() + "");
-                }
-            }
-        }
-
-        boolean estaCompleta =  false;
-
-        if(this.getCordenadasValidas() == this.listaDePixeles.size() ){
-            // TODO: mostrar imagen
-
-            estaCompleta = true;
-        }
-
-        return estaCompleta;
-
+    public boolean getIsCompleted() {
+        return  this.coordLetra.getCompleted();
     }
 
 

@@ -12,11 +12,14 @@ import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
 import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
 import com.example.aprender_pintando.Letra.LetraCtrl;
 
+import java.util.Observable;
+
 public class MainActivity extends BaseActivity  {
 
     ConfiguracionCtrl cfgCtrl;
     LetraCtrl lCtrl;
     ImageButton btn_play, btn_grilla, btn_config;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

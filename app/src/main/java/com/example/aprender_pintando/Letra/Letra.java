@@ -2,7 +2,7 @@ package com.example.aprender_pintando.Letra;
 
 import android.util.Log;
 
-import com.example.aprender_pintando.Domain.Cordenada;
+// import com.example.aprender_pintando.Domain.Cordenada;
 import com.example.aprender_pintando.Helper.LetrasHelper;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Letra extends LetraDAO {
     public Letra() {
     }
 
-    public static ArrayList<Cordenada> getAllPixelesReferencias(){
+    /*public static ArrayList<Cordenada> getAllPixelesReferencias(){
 
         ArrayList<Cordenada> Cordenadas = new ArrayList<>();
         Cordenadas.add(new Cordenada(715, 579, false));
@@ -39,7 +39,7 @@ public class Letra extends LetraDAO {
         Cordenadas.add(new Cordenada(870, 1305, false));
 
         return Cordenadas;
-    }
+    }*/
 
     public int getUrlImagen(){
         return LetrasHelper.UrlLetra(this.letra);
