@@ -15,7 +15,6 @@ public class MotorJuego {
     public MotorJuego(Context context)
     {
         this.lCtrl = new LetraCtrl(context);
-        //TODO: ver como traer de la db y limpiar campos
         this.Letra = new Letra();
     }
 

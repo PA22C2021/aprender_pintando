@@ -46,9 +46,6 @@ public class DrawFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
-
-        motorJuego = new MotorJuego(view.getContext());
-
         draw = new Draw(view.getContext());
         draw.setBackgroundColor(ColorBD.getColor(view));
 
@@ -57,7 +54,10 @@ public class DrawFragment extends Fragment {
         imageLetra = (ImageView) getActivity().findViewById(R.id.imageLetra);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
         progressBar = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
+
         lCtrl = new LetraCtrl(getContext());
+        motorJuego = new MotorJuego(view.getContext());
+
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
