@@ -1,6 +1,4 @@
 package com.example.aprender_pintando.Domain;
-
-import com.example.aprender_pintando.Enum.LetraEnum;
 import com.example.aprender_pintando.Letra.Letra;
 
 import java.util.Arrays;
@@ -17,9 +15,9 @@ public class MotorJuego {
     }
 
     // Si estamos leyendo de la base hay que enviar la letra por parametro.
-    public MotorJuego(LetraEnum letraEnum)
+    public MotorJuego(Letra letra)
     {
-         this.Letra = new Letra();
+         this.Letra = letra;
     }
 
     public Letra LetraSiguiente()

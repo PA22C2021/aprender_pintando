@@ -1,6 +1,5 @@
 package com.example.aprender_pintando.Helper;
 
-import com.example.aprender_pintando.Enum.LetraEnum;
 import com.example.aprender_pintando.R;
 
 public abstract class LetrasHelper
