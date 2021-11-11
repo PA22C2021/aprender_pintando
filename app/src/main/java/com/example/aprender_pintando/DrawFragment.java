@@ -14,11 +14,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
 import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
 import com.example.aprender_pintando.Domain.ColorBD;
 import com.example.aprender_pintando.Domain.Draw;
 import com.example.aprender_pintando.Domain.MotorJuego;
 import com.example.aprender_pintando.Letra.Letra;
+import com.example.aprender_pintando.Letra.LetraCtrl;
 
 public class DrawFragment extends Fragment {
 
@@ -28,6 +30,8 @@ public class DrawFragment extends Fragment {
     ImageView imageLetra;
     ImageButton btnReiniciar, btnTerminar;
     MotorJuego motorJuego;
+    Letra letra = new Letra();
+    LetraCtrl lCtrl;
 
     public DrawFragment() {
     }
@@ -53,7 +57,7 @@ public class DrawFragment extends Fragment {
         imageLetra = (ImageView) getActivity().findViewById(R.id.imageLetra);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
         progressBar = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
-
+        lCtrl = new LetraCtrl(getContext());
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -68,13 +72,15 @@ public class DrawFragment extends Fragment {
             }
         });
 
+        this.letra.setVisualized(true);
+        this.lCtrl.actualizarLetra(this.letra);
         return draw;
     }
 
     public void TerminarButtonOnClick(View view)
     {
         draw.ClearDraw();
-        Letra letra = motorJuego.LetraSiguiente();
+        letra = motorJuego.LetraSiguiente();
 
         if (letra != null)
         {
@@ -87,6 +93,9 @@ public class DrawFragment extends Fragment {
             Intent intent = new Intent(view.getContext(), ProgressGridActivity.class);
             startActivity(intent);
         }
+
+        this.letra.setVisualized(true);
+        this.lCtrl.actualizarLetra(this.letra);
     }
 
     public void ReiniciarLetraButtonOnClick(View view)
