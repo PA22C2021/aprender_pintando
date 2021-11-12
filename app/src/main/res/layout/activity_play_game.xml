@@ -102,4 +102,16 @@
         app:layout_constraintVertical_bias="0.44"
         app:srcCompat="@drawable/letra_a" />
 
+    <ImageView
+        android:id="@+id/letra_completada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/letra_completada" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

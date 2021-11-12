@@ -9,7 +9,12 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.aprender_pintando.Controller.LetraCtrl;
 import com.example.aprender_pintando.Helper.CoordenadaValidatorHelper;
 
 public class Draw extends View {
@@ -25,6 +30,32 @@ public class Draw extends View {
     private Path drawPath;
     private CoordenadaValidatorHelper coordValidator;
     private Coordenada coordLetra;
+
+    ProgressBar progressBar;
+    ImageView letraCompletada;
+    MotorJuego motorJuego;
+    Letra letra;
+    LetraCtrl lCtrl;
+
+    public void setProgressBar(ProgressBar progressBar) {
+        this.progressBar = progressBar;
+    }
+
+    public void setLetraCompletada(ImageView letraCompletada) {
+        this.letraCompletada = letraCompletada;
+    }
+
+    public void setMotorJuego(MotorJuego motorJuego) {
+        this.motorJuego = motorJuego;
+    }
+
+    public void setLetra(Letra letra) {
+        this.letra = letra;
+    }
+
+    public void setlCtrl(LetraCtrl lCtrl) {
+        this.lCtrl = lCtrl;
+    }
 
     public void setCoordLetra(Coordenada coordLetra) {
         this.coordLetra = coordLetra;
@@ -99,8 +130,10 @@ public class Draw extends View {
 
         boolean termino = this.coordValidator.validarCoordenadas(touchX, touchY);
 
+        progressBar.setProgress(coordValidator.getCantCoordenadasValidas());
+
         if(termino){
-            this.coordLetra.setCompleted(true);
+            letraCompletada.setVisibility(VISIBLE);
         }
 
         //repintar

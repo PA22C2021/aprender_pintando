@@ -25,10 +25,10 @@ import com.example.aprender_pintando.Controller.LetraCtrl;
 
 public class DrawFragment extends Fragment {
 
-    TextView tvLetraActual;
     Draw draw;
+    TextView tvLetraActual;
     ProgressBar progressBar;
-    ImageView imageLetra;
+    ImageView imageLetra, letraCompletada;
     ImageButton btnReiniciar, btnTerminar;
     MotorJuego motorJuego;
     Letra letra = new Letra();
@@ -52,11 +52,12 @@ public class DrawFragment extends Fragment {
         tvLetraActual = (TextView) getActivity().findViewById(R.id.lblLetra);
         btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
         imageLetra = (ImageView) getActivity().findViewById(R.id.imageLetra);
+        letraCompletada = (ImageView) getActivity().findViewById(R.id.letra_completada);
         btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
         progressBar = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
 
         lCtrl = new LetraCtrl(getContext());
-        motorJuego = new MotorJuego(view.getContext());
+        motorJuego = new MotorJuego(getContext());
 
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -78,19 +79,21 @@ public class DrawFragment extends Fragment {
         CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
         cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
         draw.setCoordValidator(cvAUX);
-
-
+        draw.setMotorJuego(motorJuego);
+        draw.setlCtrl(lCtrl);
+        draw.setLetra(letra);
+        draw.setProgressBar(progressBar);
+        draw.setLetraCompletada(letraCompletada);
 
         progressBar.setMax(this.letra.getCoordenadas().size());
+
+
         return draw;
     }
-
-
 
     public void TerminarButtonOnClick(View view)
     {
         draw.ClearDraw();
-        progressBar.setProgress(this.letra.getCoordenadas().size()/2);
         letra = motorJuego.LetraSiguiente();
 
         if (letra != null)
