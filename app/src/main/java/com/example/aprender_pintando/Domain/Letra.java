@@ -1,13 +1,10 @@
-package com.example.aprender_pintando.Letra;
+package com.example.aprender_pintando.Domain;
 
-import android.util.Log;
-
-// import com.example.aprender_pintando.Domain.Cordenada;
-import com.example.aprender_pintando.Helper.LetrasHelper;
+import com.example.aprender_pintando.Helper.LetraHelper;
 
 import java.util.ArrayList;
 
-public class Letra extends LetraDAO {
+public class Letra {
 
     private String letra = "A";
     private boolean isVisualized = false;
@@ -24,25 +21,12 @@ public class Letra extends LetraDAO {
     public Letra() {
     }
 
-    /*public static ArrayList<Cordenada> getAllPixelesReferencias(){
-
-        ArrayList<Cordenada> Cordenadas = new ArrayList<>();
-        Cordenadas.add(new Cordenada(715, 579, false));
-        Cordenadas.add(new Cordenada(608, 722, false));
-        Cordenadas.add(new Cordenada(589, 907, false));
-        Cordenadas.add(new Cordenada(555, 1093, false));
-        Cordenadas.add(new Cordenada(526, 1281, false));
-        Cordenadas.add(new Cordenada(711, 1119, false));
-        Cordenadas.add(new Cordenada(864, 1122, false));
-        Cordenadas.add(new Cordenada(840, 950, false));
-        Cordenadas.add(new Cordenada(797, 765, false));
-        Cordenadas.add(new Cordenada(870, 1305, false));
-
-        return Cordenadas;
-    }*/
+    public ArrayList<Coordenada> getCoordenadas(){
+        return LetraHelper.getAllCoordenadasLetra(this.letra);
+    }
 
     public int getUrlImagen(){
-        return LetrasHelper.UrlLetra(this.letra);
+        return LetraHelper.UrlLetra(this.letra);
     }
 
     public String getLetra() {

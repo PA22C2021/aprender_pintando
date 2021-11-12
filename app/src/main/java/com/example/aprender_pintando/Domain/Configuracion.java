@@ -1,6 +1,6 @@
-package com.example.aprender_pintando.Configuracion;
+package com.example.aprender_pintando.Domain;
 
-public class Configuracion extends ConfiguracionDAO {
+public class Configuracion {
 
     private int sonido;
     private String color;

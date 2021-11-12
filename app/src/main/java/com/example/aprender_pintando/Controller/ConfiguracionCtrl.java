@@ -1,14 +1,16 @@
-package com.example.aprender_pintando.Configuracion;
+package com.example.aprender_pintando.Controller;
 
 import android.content.Context;
 
-public class ConfiguracionCtrl {
+import com.example.aprender_pintando.Domain.Configuracion;
+import com.example.aprender_pintando.DAO.ConfiguracionDAO;
 
-    private Context _context;
+public class ConfiguracionCtrl extends BaseController {
+
     private ConfiguracionDAO configuracionDAO;
 
     public ConfiguracionCtrl(Context _context) {
-        this._context = _context;
+        super(_context);
         configuracionDAO = new ConfiguracionDAO(this._context);
     }
 

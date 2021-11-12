@@ -7,15 +7,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.aprender_pintando.Coordenadas.CoordenadasLetra;
-import com.example.aprender_pintando.Coordenadas.CoordenadasValidator;
-import com.example.aprender_pintando.DrawFragment;
-
-import java.util.ArrayList;
+import com.example.aprender_pintando.Helper.CoordenadaValidatorHelper;
 
 public class Draw extends View {
 
@@ -28,21 +23,21 @@ public class Draw extends View {
     private Bitmap canvasBitmap;
     private Canvas drawCanvas;
     private Path drawPath;
-    private CoordenadasValidator coordValidator;
-    private CoordenadasLetra coordLetra;
+    private CoordenadaValidatorHelper coordValidator;
+    private Coordenada coordLetra;
 
-    public void setCoordLetra(CoordenadasLetra coordLetra) {
+    public void setCoordLetra(Coordenada coordLetra) {
         this.coordLetra = coordLetra;
     }
-    public void setCoordValidator(CoordenadasValidator coordValidator) {
+    public void setCoordValidator(CoordenadaValidatorHelper coordValidator) {
         this.coordValidator = coordValidator;
     }
 
-    public CoordenadasValidator getCoordValidator() {
+    public CoordenadaValidatorHelper getCoordValidator() {
         return coordValidator;
     }
 
-    public CoordenadasLetra getCoordLetra() {
+    public Coordenada getCoordLetra() {
         return coordLetra;
     }
 
@@ -56,7 +51,7 @@ public class Draw extends View {
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
-        coordValidator = new CoordenadasValidator();
+        coordValidator = new CoordenadaValidatorHelper();
     }
 
     //Tamaño asignado a la vista

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.aprender_pintando.Configuracion.Configuracion;
-import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
+import com.example.aprender_pintando.Domain.Configuracion;
+import com.example.aprender_pintando.Controller.ConfiguracionCtrl;
 import com.example.aprender_pintando.Domain.ColorBD;
 
 public class SettingsActivity extends BaseActivity  {

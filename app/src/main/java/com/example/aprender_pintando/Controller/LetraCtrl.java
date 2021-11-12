@@ -1,17 +1,17 @@
-package com.example.aprender_pintando.Letra;
-
-import static com.example.aprender_pintando.Letra.LetraDAO.MAX_NRO_LETRA;
+package com.example.aprender_pintando.Controller;
 
 import android.content.Context;
+import com.example.aprender_pintando.DAO.LetraDAO;
+import com.example.aprender_pintando.Domain.Letra;
 import java.util.ArrayList;
 
-public class LetraCtrl {
+public class LetraCtrl extends BaseController {
 
-    private Context _context;
     private LetraDAO lDao;
+    private static final int MAX_NRO_LETRA = 27;
 
     public LetraCtrl(Context _context) {
-        this._context = _context;
+        super(_context);
         lDao = new LetraDAO(this._context);
     }
 

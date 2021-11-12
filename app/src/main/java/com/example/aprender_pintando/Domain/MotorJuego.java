@@ -1,10 +1,7 @@
 package com.example.aprender_pintando.Domain;
 import android.content.Context;
 
-import com.example.aprender_pintando.Letra.Letra;
-import com.example.aprender_pintando.Letra.LetraCtrl;
-
-import java.util.Arrays;
+import com.example.aprender_pintando.Controller.LetraCtrl;
 
 public class MotorJuego {
 
@@ -31,7 +28,6 @@ public class MotorJuego {
 
     public Letra LetraSiguiente()
     {
-
         return lCtrl.getSiguienteLetra(Letra.getNroLetra());
     }
 }

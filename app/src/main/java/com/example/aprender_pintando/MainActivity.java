@@ -1,18 +1,14 @@
 package com.example.aprender_pintando;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.aprender_pintando.Configuracion.Configuracion;
-import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
-import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
-import com.example.aprender_pintando.Letra.LetraCtrl;
-
-import java.util.Observable;
+import com.example.aprender_pintando.Domain.Configuracion;
+import com.example.aprender_pintando.Controller.ConfiguracionCtrl;
+import com.example.aprender_pintando.Controller.LetraCtrl;
 
 public class MainActivity extends BaseActivity  {
 
@@ -30,12 +26,24 @@ public class MainActivity extends BaseActivity  {
         lCtrl = new LetraCtrl(this);
         Configuracion cfg = cfgCtrl.getConfiguracion();
 
+        cargarSonidos();
         if(cfg.getSonido() != -1){ iniciarSonidoConfig(cfg.getSonido());}
         else { iniciarSonidoAleatorio(); }
     }
     @Override
     protected int getLayoutResourceId(){
         return R.layout.activity_main;
+    }
+
+    private void cargarSonidos(){
+        if(sonidos[0] == null)
+            sonidos[0] = MediaPlayer.create(this, R.raw.sound01);
+        if(sonidos[1] == null)
+            sonidos[1] = MediaPlayer.create(this, R.raw.sound02);
+        if(sonidos[2] == null)
+            sonidos[2] = MediaPlayer.create(this, R.raw.sound03);
+        if(sonidos[3] == null)
+            sonidos[3] = MediaPlayer.create(this, R.raw.sound04);
     }
 
     private void iniciarSonidoAleatorio(){

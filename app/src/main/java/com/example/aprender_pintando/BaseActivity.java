@@ -20,7 +20,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        cargarSonidos();
         setContentView(getLayoutResourceId());
     }
     protected abstract int getLayoutResourceId();
@@ -28,17 +27,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
-    }
-
-    private void cargarSonidos(){
-        if(sonidos[0] == null)
-            sonidos[0] = MediaPlayer.create(this, R.raw.sound01);
-        if(sonidos[1] == null)
-            sonidos[1] = MediaPlayer.create(this, R.raw.sound02);
-        if(sonidos[2] == null)
-            sonidos[2] = MediaPlayer.create(this, R.raw.sound03);
-        if(sonidos[3] == null)
-            sonidos[3] = MediaPlayer.create(this, R.raw.sound04);
     }
 
     public void RegresarMenu(View view)

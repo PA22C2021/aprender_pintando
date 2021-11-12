@@ -1,12 +1,11 @@
 package com.example.aprender_pintando;
 
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.widget.GridView;
 
 import com.example.aprender_pintando.Adapter.LetraAdapter;
-import com.example.aprender_pintando.Letra.Letra;
-import com.example.aprender_pintando.Letra.LetraCtrl;
+import com.example.aprender_pintando.Domain.Letra;
+import com.example.aprender_pintando.Controller.LetraCtrl;
 
 import java.util.ArrayList;
 

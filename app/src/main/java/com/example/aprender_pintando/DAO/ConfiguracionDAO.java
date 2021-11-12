@@ -1,24 +1,17 @@
-package com.example.aprender_pintando.Configuracion;
+package com.example.aprender_pintando.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.aprender_pintando.Domain.Configuracion;
 import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
-import com.example.aprender_pintando.Letra.Letra;
 
-public class ConfiguracionDAO {
-
-    private Context _context;
-    private static final String dbName = "aprender_pintando";
-    private static final int version = 1;
+public class ConfiguracionDAO extends BaseDAO {
 
     public ConfiguracionDAO(Context _context) {
-        this._context = _context;
-    }
-
-    public ConfiguracionDAO() {
+        super(_context);
     }
 
     public boolean actualizarConfiguracion(Configuracion config){

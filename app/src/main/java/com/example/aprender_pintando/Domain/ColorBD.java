@@ -3,8 +3,7 @@ package com.example.aprender_pintando.Domain;
 import android.graphics.Color;
 import android.view.View;
 
-import com.example.aprender_pintando.Configuracion.Configuracion;
-import com.example.aprender_pintando.Configuracion.ConfiguracionCtrl;
+import com.example.aprender_pintando.Controller.ConfiguracionCtrl;
 import com.example.aprender_pintando.R;
 
 public abstract class ColorBD {

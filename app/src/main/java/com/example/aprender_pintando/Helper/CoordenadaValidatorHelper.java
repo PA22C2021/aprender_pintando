@@ -1,16 +1,15 @@
-package com.example.aprender_pintando.Coordenadas;
-
-import android.util.Log;
+package com.example.aprender_pintando.Helper;
 
 // import com.example.aprender_pintando.Domain.Cordenada;
 
-import java.util.ArrayList;
-import java.util.Observable;
+import com.example.aprender_pintando.Domain.Coordenada;
 
-public class CoordenadasValidator {
+import java.util.ArrayList;
+
+public class CoordenadaValidatorHelper {
 
     private int cantCoordenadasValidas;
-    private ArrayList<CoordenadasLetra> listaDeCoordenadas;
+    private ArrayList<Coordenada> listaDeCoordenadas;
     private boolean letraCompleta;
 
 
@@ -22,11 +21,11 @@ public class CoordenadasValidator {
         this.cantCoordenadasValidas = cantCoordenadasValidas;
     }
 
-    public ArrayList<CoordenadasLetra> getListaDeCoordenadas() {
+    public ArrayList<Coordenada> getListaDeCoordenadas() {
         return listaDeCoordenadas;
     }
 
-    public void setListaDeCoordenadas(ArrayList<CoordenadasLetra> listaDeCoordenadas) {
+    public void setListaDeCoordenadas(ArrayList<Coordenada> listaDeCoordenadas) {
         this.listaDeCoordenadas = listaDeCoordenadas;
     }
 
@@ -46,7 +45,7 @@ public class CoordenadasValidator {
     public boolean validarCoordenadas (float touchX, float touchY){
 
 
-        for(CoordenadasLetra c : this.listaDeCoordenadas){
+        for(Coordenada c : this.listaDeCoordenadas){
             float pixelWithMarginErrorXPlus = c.getX() + 90;
             float pixelWithMarginErrorXMinus = c.getX() - 90;
             float pixelWithMarginErrorYPlus = c.getY() + 90;

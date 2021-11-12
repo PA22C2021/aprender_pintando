@@ -1,4 +1,4 @@
-package com.example.aprender_pintando.Letra;
+package com.example.aprender_pintando.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,21 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.aprender_pintando.Helper.AdminSQLiteOpenHelper;
+import com.example.aprender_pintando.Domain.Letra;
 
 import java.util.ArrayList;
 
-public class LetraDAO {
+public class LetraDAO extends BaseDAO {
 
-    public static int MAX_NRO_LETRA = 27;
-    private Context _context;
-    private static final String dbName = "aprender_pintando";
-    private static final int version = 1;
 
-    public LetraDAO() {
-    }
 
     public LetraDAO(Context _context) {
-        this._context = _context;
+        super(_context);
     }
 
     public boolean actualizarLetra( Letra l){

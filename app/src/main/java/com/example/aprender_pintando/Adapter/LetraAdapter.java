@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.example.aprender_pintando.Letra.Letra;
+import com.example.aprender_pintando.Domain.Letra;
 import com.example.aprender_pintando.R;
 
 import java.util.ArrayList;

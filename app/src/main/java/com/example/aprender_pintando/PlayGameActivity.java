@@ -1,13 +1,9 @@
 package com.example.aprender_pintando;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.aprender_pintando.Configuracion.ConfiguracionDAO;
-import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
 import com.example.aprender_pintando.Domain.ColorBD;
 
 public class PlayGameActivity extends BaseActivity {
