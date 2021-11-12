@@ -95,19 +95,17 @@ public class DrawFragment extends Fragment {
 
         if (letra != null)
         {
-
             imageLetra.setImageResource(letra.getUrlImagen());
             tvLetraActual.setText(letra.toString());
             motorJuego.setLetra(letra);
+            this.letra.setVisualized(true);
+            this.lCtrl.actualizarLetra(this.letra);
         }
         else
         {
             Intent intent = new Intent(view.getContext(), ProgressGridActivity.class);
             startActivity(intent);
         }
-
-        this.letra.setVisualized(true);
-        this.lCtrl.actualizarLetra(this.letra);
     }
 
     public void ReiniciarLetraButtonOnClick(View view)
