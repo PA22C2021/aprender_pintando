@@ -70,8 +70,8 @@ public abstract class LetraHelper
         }
     }
 
-    public static ArrayList<Coordenada> getAllCoordenadasLetra(String letra){
-
+    public static ArrayList<Coordenada> getAllCoordenadasLetra(String letra)
+    {
         switch (letra)
         {
             case "A":
