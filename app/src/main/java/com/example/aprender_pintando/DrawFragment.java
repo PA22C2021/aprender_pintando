@@ -84,6 +84,9 @@ public class DrawFragment extends Fragment {
         draw.setLetra(letra);
         draw.setProgressBar(progressBar);
         draw.setLetraCompletada(letraCompletada);
+        draw.setBtnTerminar(btnTerminar);
+        draw.setBtnReiniciar(btnReiniciar);
+
 
         progressBar.setMax(this.letra.getCoordenadas().size());
 
@@ -101,8 +104,17 @@ public class DrawFragment extends Fragment {
             imageLetra.setImageResource(letra.getUrlImagen());
             tvLetraActual.setText(letra.toString());
             motorJuego.setLetra(letra);
+
+            CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
+            cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
+            draw.setCoordValidator(cvAUX);
+
+            draw.getCoordValidator().setCantCoordenadasValidas(0);
+            progressBar.setProgress(0);
+            progressBar.setMax(letra.getCoordenadas().size());
             this.letra.setVisualized(true);
             this.lCtrl.actualizarLetra(this.letra);
+            draw.ClearDraw();
         }
         else
         {
@@ -115,6 +127,11 @@ public class DrawFragment extends Fragment {
     {
         if (!draw.isClean())
         {
+            progressBar.setProgress(0);
+            CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
+            cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
+            draw.setCoordValidator(cvAUX);
+
             ReiniciarLetraDialog.GetAlertDialog(view, draw).show();
         }
     }

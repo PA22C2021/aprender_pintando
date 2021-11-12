@@ -7,8 +7,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -30,6 +32,8 @@ public class Draw extends View {
     private Path drawPath;
     private CoordenadaValidatorHelper coordValidator;
     private Coordenada coordLetra;
+    ImageButton btnReiniciar, btnTerminar;
+    public int isFirstPath = 0;
 
     ProgressBar progressBar;
     ImageView letraCompletada;
@@ -64,6 +68,22 @@ public class Draw extends View {
         this.coordValidator = coordValidator;
     }
 
+    public ImageButton getBtnReiniciar() {
+        return btnReiniciar;
+    }
+
+    public void setBtnReiniciar(ImageButton btnReiniciar) {
+        this.btnReiniciar = btnReiniciar;
+    }
+
+    public ImageButton getBtnTerminar() {
+        return btnTerminar;
+    }
+
+    public void setBtnTerminar(ImageButton btnTerminar) {
+        this.btnTerminar = btnTerminar;
+    }
+
     public CoordenadaValidatorHelper getCoordValidator() {
         return coordValidator;
     }
@@ -93,6 +113,8 @@ public class Draw extends View {
         drawCanvas = new Canvas(canvasBitmap);
     }
 
+
+
     @Override
     protected void onDraw(Canvas canvas)
     {
@@ -106,6 +128,10 @@ public class Draw extends View {
         float touchX = event.getX();
         float touchY = event.getY();
 
+        boolean termino = this.coordValidator.validarCoordenadas(touchX, touchY);
+
+        if((isFirstPath % 2 )  != 0  && termino) this.ClearDraw();
+
         switch (event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
@@ -117,6 +143,7 @@ public class Draw extends View {
                 break;
 
             case MotionEvent.ACTION_UP:
+
                 drawPath.lineTo(touchX, touchY);
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();
@@ -127,13 +154,18 @@ public class Draw extends View {
         }
 
         isClean = false;
-
-        boolean termino = this.coordValidator.validarCoordenadas(touchX, touchY);
-
         progressBar.setProgress(coordValidator.getCantCoordenadasValidas());
+        this.isFirstPath ++;
 
         if(termino){
             letraCompletada.setVisibility(VISIBLE);
+            letra.setCompleted(true);
+            lCtrl.actualizarLetra(letra);
+            letraCompletada.setVisibility(INVISIBLE);
+            btnTerminar.callOnClick();
+            btnReiniciar.callOnClick();
+            this.ClearDraw();
+            return true;
         }
 
         //repintar
