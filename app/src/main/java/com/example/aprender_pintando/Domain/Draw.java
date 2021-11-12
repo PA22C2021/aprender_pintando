@@ -39,7 +39,6 @@ public class Draw extends View {
     ProgressBar progressBar;
     ImageView letraCompletada;
     MotorJuego motorJuego;
-    Letra letra;
     LetraCtrl lCtrl;
 
     Handler handler = new Handler();
@@ -56,9 +55,6 @@ public class Draw extends View {
         this.motorJuego = motorJuego;
     }
 
-    public void setLetra(Letra letra) {
-        this.letra = letra;
-    }
 
     public void setlCtrl(LetraCtrl lCtrl) {
         this.lCtrl = lCtrl;
@@ -162,14 +158,14 @@ public class Draw extends View {
 
         if(termino){
             letraCompletada.setVisibility(VISIBLE);
-            letra.setCompleted(true);
-            lCtrl.actualizarLetra(letra);
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     // Do something after 5s = 5000ms
                     if(coordValidator.validarCoordenadas(touchX, touchY)){
+                        motorJuego.getLetra().setCompleted(true);
+                        lCtrl.actualizarLetra(motorJuego.getLetra());
                         letraCompletada.setVisibility(INVISIBLE);
                         btnTerminar.callOnClick();
                     }

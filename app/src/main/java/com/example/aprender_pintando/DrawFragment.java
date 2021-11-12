@@ -81,7 +81,6 @@ public class DrawFragment extends Fragment {
         draw.setCoordValidator(cvAUX);
         draw.setMotorJuego(motorJuego);
         draw.setlCtrl(lCtrl);
-        draw.setLetra(letra);
         draw.setProgressBar(progressBar);
         draw.setLetraCompletada(letraCompletada);
         draw.setBtnTerminar(btnTerminar);
