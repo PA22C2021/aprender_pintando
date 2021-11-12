@@ -12,6 +12,7 @@ public class MotorJuego {
     public MotorJuego(Context context)
     {
         this.lCtrl = new LetraCtrl(context);
+        lCtrl.limpiarLetras();
         this.Letra = new Letra();
     }
 
@@ -21,6 +22,8 @@ public class MotorJuego {
         this.lCtrl = new LetraCtrl(context);
         this.Letra = letra;
     }
+
+
 
     public Letra getLetra() { return this.Letra; }
 

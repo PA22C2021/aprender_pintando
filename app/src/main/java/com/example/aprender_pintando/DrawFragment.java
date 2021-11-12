@@ -57,7 +57,17 @@ public class DrawFragment extends Fragment {
         progressBar = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
 
         lCtrl = new LetraCtrl(getContext());
-        motorJuego = new MotorJuego(getContext());
+
+
+        letra = lCtrl.getLetraPendiente();
+        if(letra != null){
+            motorJuego = new MotorJuego(getContext(), letra);
+            imageLetra.setImageResource(letra.getUrlImagen());
+            tvLetraActual.setText(letra.toString());
+
+        } else {
+            motorJuego = new MotorJuego(getContext());
+        }
 
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
             @Override

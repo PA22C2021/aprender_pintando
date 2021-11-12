@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity  {
 
     public void ComenzarJuego(View view)
     {
-        lCtrl.limpiarLetras();
+
         Intent intent = new Intent(view.getContext(), PlayGameActivity.class);
         startActivity(intent);
     }

@@ -170,7 +170,7 @@ public class Draw extends View {
                         btnTerminar.callOnClick();
                     }
                 }
-            }, 4000);
+            }, 3000);
 
             return true;
         }

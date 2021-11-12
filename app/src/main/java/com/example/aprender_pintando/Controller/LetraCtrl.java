@@ -34,5 +34,19 @@ public class LetraCtrl extends BaseController {
     public ArrayList<Letra> getTodasLasLetras () {
         return lDao.getTodasLasLetras();
     }
+
+    public Letra getLetraPendiente(){
+        ArrayList<Letra> lista = lDao.getTodasLasLetras();
+        for (Letra l : lista){
+            if(!l.isCompleted()){
+                return l;
+            }
+        }
+
+        return null;
+
+    }
+
+
 }
 
