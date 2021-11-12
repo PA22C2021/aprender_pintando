@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,6 +41,8 @@ public class Draw extends View {
     MotorJuego motorJuego;
     Letra letra;
     LetraCtrl lCtrl;
+
+    Handler handler = new Handler();
 
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
@@ -161,10 +164,18 @@ public class Draw extends View {
             letraCompletada.setVisibility(VISIBLE);
             letra.setCompleted(true);
             lCtrl.actualizarLetra(letra);
-            letraCompletada.setVisibility(INVISIBLE);
-            btnTerminar.callOnClick();
-            btnReiniciar.callOnClick();
-            this.ClearDraw();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 5s = 5000ms
+                    if(coordValidator.validarCoordenadas(touchX, touchY)){
+                        letraCompletada.setVisibility(INVISIBLE);
+                        btnTerminar.callOnClick();
+                    }
+                }
+            }, 4000);
+
             return true;
         }
 
