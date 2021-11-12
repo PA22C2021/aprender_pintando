@@ -75,7 +75,7 @@ public abstract class LetraHelper
         switch (letra)
         {
             case "A":
-                return coordenadasA();
+                return coordenadasLetraA();
             /*case "B":
                 return R.drawable.letra_b;
             case "C":
@@ -134,7 +134,7 @@ public abstract class LetraHelper
 
     }
 
-    private static ArrayList<Coordenada> coordenadasA(){
+    private static ArrayList<Coordenada> coordenadasLetraA(){
         ArrayList<Coordenada> Cordenadas = new ArrayList<>();
         Cordenadas.add(new Coordenada(715, 579, false));
         Cordenadas.add(new Coordenada(608, 722, false));

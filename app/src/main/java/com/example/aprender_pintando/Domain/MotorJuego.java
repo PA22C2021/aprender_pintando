@@ -22,6 +22,8 @@ public class MotorJuego {
         this.Letra = letra;
     }
 
+    public Letra getLetra() { return this.Letra; }
+
     public void setLetra(Letra letra){
         this.Letra = letra;
     }
