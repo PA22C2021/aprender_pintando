@@ -12,10 +12,12 @@
         android:layout_height="90dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/sound01"
         android:onClick="setearSonido"
         android:scaleType="fitCenter"
         android:tag="0"
+        app:layout_constraintEnd_toStartOf="@+id/sonido2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/template_screen" />
 
@@ -23,7 +25,7 @@
         android:id="@+id/sonido4"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/sound04"
@@ -37,11 +39,13 @@
         android:id="@+id/sonido3"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/sound03"
         android:onClick="setearSonido"
         android:tag="2"
+        app:layout_constraintEnd_toStartOf="@+id/sonido4"
         app:layout_constraintStart_toEndOf="@+id/sonido2"
         app:layout_constraintTop_toBottomOf="@+id/template_screen" />
 
@@ -49,12 +53,14 @@
         android:id="@+id/sonido2"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/sound02"
         android:onClick="setearSonido"
         android:scaleType="fitCenter"
         android:tag="3"
+        app:layout_constraintEnd_toStartOf="@+id/sonido3"
         app:layout_constraintStart_toEndOf="@+id/sonido1"
         app:layout_constraintTop_toBottomOf="@+id/template_screen" />
 
@@ -88,6 +94,7 @@
         android:id="@+id/screen5"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/screen05"
@@ -95,12 +102,14 @@
         android:scaleType="fitCenter"
         android:tag="3"
         app:layout_constraintEnd_toStartOf="@+id/screen6"
+        app:layout_constraintStart_toEndOf="@+id/template_screen"
         app:layout_constraintTop_toBottomOf="@+id/screen3" />
 
     <ImageButton
         android:id="@+id/screen1"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/screen01"
@@ -108,6 +117,7 @@
         android:scaleType="fitCenter"
         android:tag="1"
         app:layout_constraintEnd_toStartOf="@+id/screen2"
+        app:layout_constraintStart_toEndOf="@+id/template_screen"
         app:layout_constraintTop_toBottomOf="@+id/back" />
 
     <ImageButton
@@ -127,6 +137,7 @@
         android:id="@+id/screen3"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/screen03"
@@ -134,6 +145,7 @@
         android:scaleType="fitCenter"
         android:tag="6"
         app:layout_constraintEnd_toStartOf="@+id/screen4"
+        app:layout_constraintStart_toEndOf="@+id/template_screen"
         app:layout_constraintTop_toBottomOf="@+id/screen1" />
 
     <ImageButton
@@ -156,10 +168,10 @@
         android:layout_gravity="center"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="#fff"
         android:cropToPadding="true"
         android:padding="7dp"
-        android:background="#fff"
         android:scaleType="fitCenter"
         android:src="@drawable/letra_a"
         app:layout_constraintEnd_toStartOf="@+id/screen5"
