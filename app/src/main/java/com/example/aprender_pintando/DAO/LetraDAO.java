@@ -55,7 +55,7 @@ public class LetraDAO extends BaseDAO {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(_context, dbName, null, version);
         SQLiteDatabase db = admin.getReadableDatabase();
 
-        Cursor fila = db.rawQuery("SELECT * FROM letras WHERE nroLetra > " + nroLetra + " AND isCompleted = false"  , null);
+        Cursor fila = db.rawQuery("SELECT * FROM letras WHERE nroLetra > " + nroLetra + " AND isCompleted = 0"  , null);
         fila.moveToFirst();
 
         String letra = fila.getString(0);
