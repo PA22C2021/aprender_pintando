@@ -55,7 +55,10 @@ public class MainActivity extends BaseActivity  {
         Configuracion cfg = cfgCtrl.getConfiguracion();
 
         cargarSonidos();
-        if(cfg.getSonido() != -1){ iniciarSonidoConfig(cfg.getSonido());}
+        int currentSonido = cfg.getSonido();
+        if(currentSonido != -1){
+            iniciarSonidoConfig(currentSonido);
+        }
         else { iniciarSonidoAleatorio(); }
     }
     @Override

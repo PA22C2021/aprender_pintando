@@ -47,10 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        for (int i = 0; i< 4; i++) {
-            if(sonidos[i].isPlaying())
-                sonidos[i].stop();
-        }
 
         super.onDestroy();
     }
