@@ -1,44 +1,58 @@
 package com.example.aprender_pintando;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.aprender_pintando.Domain.Configuracion;
 import com.example.aprender_pintando.Controller.ConfiguracionCtrl;
 import com.example.aprender_pintando.Controller.LetraCtrl;
+import com.example.aprender_pintando.Domain.Letra;
 
 public class MainActivity extends BaseActivity  {
 
     ConfiguracionCtrl cfgCtrl;
     LetraCtrl lCtrl;
-    ImageButton btn_play, btn_grilla, btn_config;
+    ConstraintLayout view;
+    ImageButton btn_play, btn_continuar, btn_grilla, btn_config;
+    int initialPosYButtons = 100;
+    int widthAndHeigthButtons = 240;
+    int marginButtons = 40;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ConstraintLayout view = findViewById(R.id.main);
-
-        btn_play = (ImageButton) findViewById(R.id.btn_play);
-        btn_grilla = (ImageButton) findViewById(R.id.btn_grid);
-        btn_config = (ImageButton) findViewById(R.id.btn_settings);
+        view = findViewById(R.id.main);
         cfgCtrl = new ConfiguracionCtrl(this);
         lCtrl = new LetraCtrl(this);
-        Configuracion cfg = cfgCtrl.getConfiguracion();
 
-        /*ImageButton btn_continuar = new ImageButton(this);
-        btn_continuar.setMaxHeight(20);
-        btn_continuar.setMaxWidth(20);
-        btn_continuar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        Drawable drawable = getResources().getDrawable( R.drawable.continuar );
-        btn_continuar.setBackground(drawable);
-        btn_continuar.setX(0);
-        btn_continuar.setY(0);
-        view.addView(btn_continuar);*/
+        int posYButtons = initialPosYButtons;
+        btn_play = createButton(1, widthAndHeigthButtons, posYButtons);
+        view.addView(btn_play);
+        posYButtons = posYButtons + widthAndHeigthButtons + marginButtons;
+
+        if(lCtrl.getLetraPendiente() != null){
+            btn_continuar = createButton(2, widthAndHeigthButtons, posYButtons);
+            view.addView(btn_continuar);
+            posYButtons = posYButtons + (widthAndHeigthButtons + marginButtons);
+        }
+
+        btn_grilla = createButton(3, widthAndHeigthButtons, posYButtons);
+        view.addView(btn_grilla);
+        posYButtons = posYButtons + (widthAndHeigthButtons + marginButtons);
+
+        btn_config = createButton(4, widthAndHeigthButtons, posYButtons);
+        view.addView(btn_config);
+
+        Configuracion cfg = cfgCtrl.getConfiguracion();
 
         cargarSonidos();
         if(cfg.getSonido() != -1){ iniciarSonidoConfig(cfg.getSonido());}
@@ -48,7 +62,6 @@ public class MainActivity extends BaseActivity  {
     protected int getLayoutResourceId(){
         return R.layout.activity_main;
     }
-
 
     private void iniciarSonidoAleatorio(){
 
@@ -75,6 +88,62 @@ public class MainActivity extends BaseActivity  {
         }
     }
 
+    private ImageButton createButton(int btn, int dimension, int posY){
+        ImageButton button = new ImageButton(this);
+        button.setLayoutParams(new ConstraintLayout.LayoutParams(dimension,dimension));
+        button.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        Drawable drawable = null;
+        switch (btn){
+            case 1:
+                drawable = getResources().getDrawable( R.drawable.play );
+                button.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        ComenzarJuego(view);
+                    }
+                });
+                break;
+            case 2:
+                drawable = getResources().getDrawable( R.drawable.continuar );
+                button.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        ContinuarJuego(view);
+                    }
+                });
+                break;
+            case 3:
+                drawable = getResources().getDrawable( R.drawable.grid );
+                button.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        GrillaProgreso(view);
+                    }
+                });
+                break;
+            case 4:
+                drawable = getResources().getDrawable( R.drawable.settings );
+                button.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        ConfigurarJuego(view);
+                    }
+                });
+                break;
+        }
+
+
+
+        button.setBackground(drawable);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+        int posX = width / 2 - dimension / 2;
+        button.setX(posX);
+        button.setY(posY);
+
+        return button;
+    }
 
     public void ComenzarJuego(View view)
     {
