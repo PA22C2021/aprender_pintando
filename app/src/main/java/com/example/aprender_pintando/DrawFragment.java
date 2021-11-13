@@ -1,7 +1,8 @@
 package com.example.aprender_pintando;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,14 +17,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
-import com.example.aprender_pintando.Confirmation.ReiniciarLetraDialog;
-import com.example.aprender_pintando.Domain.Coordenada;
 import com.example.aprender_pintando.Helper.CoordenadaValidatorHelper;
 import com.example.aprender_pintando.Domain.ColorBD;
 import com.example.aprender_pintando.Domain.Draw;
 import com.example.aprender_pintando.Domain.MotorJuego;
 import com.example.aprender_pintando.Domain.Letra;
 import com.example.aprender_pintando.Controller.LetraCtrl;
+import com.example.aprender_pintando.Helper.DialogHelper;
 
 public class DrawFragment extends Fragment {
 
@@ -102,22 +102,18 @@ public class DrawFragment extends Fragment {
 
     public void TerminarButtonOnClick(View view)
     {
-        draw.ClearDraw();
+        if(!letra.isCompleted()){
+            AlertDialog alert = DialogHelper.ConfirmSiguienteLetra(view);
+            alert.setButton(Dialog.BUTTON_POSITIVE, "SI", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    cargarSiguienteLetra(view);
 
-        if(letra.getNroLetra() == LetraCtrl.MAX_NRO_LETRA){
-            actualizarInfoLetra();
-        }
-
-        letra = motorJuego.LetraSiguiente();
-
-        if (letra != null)
-        {
-            actualizarInfoLetra();
-        }
-        else
-        {
-            Intent intent = new Intent(view.getContext(), ProgressGridActivity.class);
-            startActivity(intent);
+                }
+            });
+            alert.show();
+        }else{
+            cargarSiguienteLetra(view);
         }
     }
 
@@ -125,7 +121,7 @@ public class DrawFragment extends Fragment {
     {
         if (!draw.isClean())
         {
-            ReiniciarLetraDialog.GetAlertDialog(view, draw, progressBar).show();
+            DialogHelper.ReiniciarLetraDialog(view, draw, progressBar).show();
         }
     }
 
@@ -150,5 +146,22 @@ public class DrawFragment extends Fragment {
         this.lCtrl.actualizarLetra(this.letra);
     }
 
+    private void cargarSiguienteLetra(View view){
+        draw.ClearDraw();
 
+        if(letra.getNroLetra() == LetraCtrl.MAX_NRO_LETRA){
+            actualizarInfoLetra();
+        }
+        letra = motorJuego.LetraSiguiente();
+
+        if (letra != null)
+        {
+            actualizarInfoLetra();
+        }
+        else
+        {
+            Intent intent = new Intent(view.getContext(), ProgressGridActivity.class);
+            startActivity(intent);
+        }
+    }
 }

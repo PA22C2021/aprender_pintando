@@ -4,12 +4,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.aprender_pintando.Confirmation.VolverMenuDialog;
-
-import java.util.Observable;
+import com.example.aprender_pintando.Helper.DialogHelper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -31,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void RegresarMenu(View view)
     {
-        VolverMenuDialog.GetAlertDialog(view, this).show();
+        DialogHelper.VolverMenuDialog(view, this).show();
     }
 
     protected void cargarSonidos(){
