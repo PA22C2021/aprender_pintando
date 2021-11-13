@@ -66,8 +66,6 @@ public class DrawFragment extends Fragment {
             motorJuego = new MotorJuego(getContext(), letra);
             imageLetra.setImageResource(letra.getUrlImagen());
             tvLetraActual.setText(letra.toString());
-            letra.setVisualized(true);
-            lCtrl.actualizarLetra(letra);
             actualizarCoordenadas();
         } else {
             motorJuego = new MotorJuego(getContext());
