@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity  {
     ConstraintLayout view;
     ImageButton btn_play, btn_continuar, btn_grilla, btn_config;
     int initialPosYButtons = 100;
-    int widthAndHeigthButtons = 240;
+    int widthAndHeigthButtons = 420;
     int marginButtons = 40;
 
     @Override
@@ -147,7 +147,7 @@ public class MainActivity extends BaseActivity  {
 
     public void ComenzarJuego(View view)
     {
-
+        lCtrl.limpiarLetras();
         Intent intent = new Intent(view.getContext(), PlayGameActivity.class);
         startActivity(intent);
     }

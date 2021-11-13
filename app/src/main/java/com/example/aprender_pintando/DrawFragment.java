@@ -125,9 +125,7 @@ public class DrawFragment extends Fragment {
     {
         if (!draw.isClean())
         {
-            progressBar.setProgress(0);
-            actualizarCoordenadas();
-            ReiniciarLetraDialog.GetAlertDialog(view, draw).show();
+            ReiniciarLetraDialog.GetAlertDialog(view, draw, progressBar).show();
         }
     }
 
