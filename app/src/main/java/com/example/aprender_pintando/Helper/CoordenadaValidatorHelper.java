@@ -55,8 +55,6 @@ public class CoordenadaValidatorHelper {
                 if (!c.getCompleted()) {
                     c.setCompleted(true);
                     this.setCantCoordenadasValidas(this.getCantCoordenadasValidas() + 1);
-                    // Log.d("Tildo  un pixel", this.getCantCoordenadasValidas() + "");
-                    // Log.d("Size", this.listaDeCoordenadas.size() + "");
                 }
             }
         }
@@ -64,8 +62,6 @@ public class CoordenadaValidatorHelper {
         boolean estaCompleta =  false;
 
         if(this.getCantCoordenadasValidas() == this.listaDeCoordenadas.size() ){
-            // TODO: mostrar imagen
-            //  System.out.println("Termino!!!: ");
             estaCompleta = true;
             setLetraCompleta(true);
         }

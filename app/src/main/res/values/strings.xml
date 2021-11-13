@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">aprender_pintando</string>
+    <string name="app_name">Aprender pintando</string>
 
     <!-- IMAGENES LETRAS-->
     <string-array name="imagenesLetras">
@@ -43,7 +43,4 @@
     <string name="isVisualized">#A9A9A9</string>
     <string name="isCompleted">#80BA9D</string>
     <string name="notVisualized">#FFFBF0</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
