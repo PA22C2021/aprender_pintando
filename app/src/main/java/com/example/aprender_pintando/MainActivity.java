@@ -34,12 +34,14 @@ public class MainActivity extends BaseActivity  {
         cfgCtrl = new ConfiguracionCtrl(this);
         lCtrl = new LetraCtrl(this);
 
+        Configuracion cfg = cfgCtrl.getConfiguracion();
+
         int posYButtons = initialPosYButtons;
         btn_play = createButton(1, widthAndHeigthButtons, posYButtons);
         view.addView(btn_play);
         posYButtons = posYButtons + widthAndHeigthButtons + marginButtons;
 
-        if(lCtrl.getLetraPendiente() != null){
+        if(lCtrl.getLetraPendiente() != null && cfg.getPartidaIniciada()){
             btn_continuar = createButton(2, widthAndHeigthButtons, posYButtons);
             view.addView(btn_continuar);
             posYButtons = posYButtons + (widthAndHeigthButtons + marginButtons);
@@ -51,8 +53,6 @@ public class MainActivity extends BaseActivity  {
 
         btn_config = createButton(4, widthAndHeigthButtons, posYButtons);
         view.addView(btn_config);
-
-        Configuracion cfg = cfgCtrl.getConfiguracion();
 
         cargarSonidos();
         int currentSonido = cfg.getSonido();
@@ -151,6 +151,7 @@ public class MainActivity extends BaseActivity  {
     public void ComenzarJuego(View view)
     {
         lCtrl.limpiarLetras();
+        cfgCtrl.actualizarPartidaIniciadaConfiguracion(true);
         Intent intent = new Intent(view.getContext(), PlayGameActivity.class);
         startActivity(intent);
     }

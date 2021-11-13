@@ -110,7 +110,7 @@ public class ConfiguracionDAO extends BaseDAO {
             fila.moveToFirst();
             int sonido = Integer.parseInt(fila.getString(1));
             String color = fila.getString(2);
-            boolean partidaIniciada = fila.getString(3) == "1" ? true : false;
+            boolean partidaIniciada = fila.getInt(3) == 1 ? true : false;
             Configuracion cfg = new Configuracion(sonido,color,partidaIniciada );
             fila.close();
             db.close();
