@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.example.aprender_pintando.Domain.Configuracion;
 import com.example.aprender_pintando.Controller.ConfiguracionCtrl;
-import com.example.aprender_pintando.Domain.ColorBD;
+import com.example.aprender_pintando.Helper.ColorHelper;
 
 public class SettingsActivity extends BaseActivity  {
 
@@ -76,6 +76,6 @@ public class SettingsActivity extends BaseActivity  {
             default:
                 throw new IllegalStateException("Unexpected value: " + color);
         }
-        ColorBD.guardarColor(color, view);
+        ColorHelper.guardarColor(color, view);
     }
 }

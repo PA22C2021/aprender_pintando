@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 
 import com.example.aprender_pintando.Helper.CoordenadaValidatorHelper;
-import com.example.aprender_pintando.Domain.ColorBD;
+import com.example.aprender_pintando.Helper.ColorHelper;
 import com.example.aprender_pintando.Domain.Draw;
 import com.example.aprender_pintando.Domain.MotorJuego;
 import com.example.aprender_pintando.Domain.Letra;
@@ -49,7 +49,7 @@ public class DrawFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_draw, container, false);
         draw = new Draw(view.getContext());
-        draw.setBackgroundColor(ColorBD.getColor(view));
+        draw.setBackgroundColor(ColorHelper.getColor(view));
 
         tvLetraActual   = (TextView) getActivity().findViewById(R.id.lblLetra);
         btnReiniciar    = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);

@@ -1,12 +1,13 @@
-package com.example.aprender_pintando.Domain;
+package com.example.aprender_pintando.Helper;
 
 import android.graphics.Color;
 import android.view.View;
 
 import com.example.aprender_pintando.Controller.ConfiguracionCtrl;
+import com.example.aprender_pintando.Domain.Configuracion;
 import com.example.aprender_pintando.R;
 
-public abstract class ColorBD {
+public abstract class ColorHelper {
 
     public static int getColor(View view){
         ConfiguracionCtrl cfgCtl = new ConfiguracionCtrl(view.getContext());
