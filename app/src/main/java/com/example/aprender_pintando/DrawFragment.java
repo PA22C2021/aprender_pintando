@@ -1,5 +1,7 @@
 package com.example.aprender_pintando;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -49,12 +51,12 @@ public class DrawFragment extends Fragment {
         draw = new Draw(view.getContext());
         draw.setBackgroundColor(ColorBD.getColor(view));
 
-        tvLetraActual = (TextView) getActivity().findViewById(R.id.lblLetra);
-        btnReiniciar = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
-        imageLetra = (ImageView) getActivity().findViewById(R.id.imageLetra);
+        tvLetraActual   = (TextView) getActivity().findViewById(R.id.lblLetra);
+        btnReiniciar    = (ImageButton) getActivity().findViewById(R.id.btnReiniciar);
+        btnTerminar     = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
+        imageLetra      = (ImageView) getActivity().findViewById(R.id.imageLetra);
         letraCompletada = (ImageView) getActivity().findViewById(R.id.letra_completada);
-        btnTerminar = (ImageButton) getActivity().findViewById(R.id.btnTerminar);
-        progressBar = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
+        progressBar     = (ProgressBar) getActivity().findViewById(R.id.progresoJuego);
 
         lCtrl = new LetraCtrl(getContext());
 
@@ -86,9 +88,7 @@ public class DrawFragment extends Fragment {
         this.letra.setVisualized(true);
         this.lCtrl.actualizarLetra(this.letra);
 
-        CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
-        cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
-        draw.setCoordValidator(cvAUX);
+        actualizarCoordenadas();
         draw.setMotorJuego(motorJuego);
         draw.setlCtrl(lCtrl);
         draw.setProgressBar(progressBar);
@@ -114,9 +114,7 @@ public class DrawFragment extends Fragment {
             tvLetraActual.setText(letra.toString());
             motorJuego.setLetra(letra);
 
-            CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
-            cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
-            draw.setCoordValidator(cvAUX);
+            actualizarCoordenadas();
 
             draw.getCoordValidator().setCantCoordenadasValidas(0);
             progressBar.setProgress(0);
@@ -144,4 +142,13 @@ public class DrawFragment extends Fragment {
             ReiniciarLetraDialog.GetAlertDialog(view, draw).show();
         }
     }
+
+
+    public void actualizarCoordenadas(){
+        CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
+        cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
+        draw.setCoordValidator(cvAUX);
+    }
+
+
 }

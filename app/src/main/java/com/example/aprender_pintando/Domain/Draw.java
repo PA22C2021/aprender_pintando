@@ -1,5 +1,7 @@
 package com.example.aprender_pintando.Domain;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -166,7 +168,7 @@ public class Draw extends View {
                     if(coordValidator.validarCoordenadas(touchX, touchY)){
                         motorJuego.getLetra().setCompleted(true);
                         lCtrl.actualizarLetra(motorJuego.getLetra());
-                        letraCompletada.setVisibility(INVISIBLE);
+                        handleAnimation(getRootView());
                         btnTerminar.callOnClick();
                     }
                 }
@@ -208,5 +210,15 @@ public class Draw extends View {
         strokePaint = stroke;
         drawPaint.setStrokeWidth(stroke);
     }
+
+    public void handleAnimation (View view) {
+        ObjectAnimator animatorStars = ObjectAnimator.ofFloat(letraCompletada, "y", 420f);
+        animatorStars.setDuration(3000);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(animatorStars);
+        animatorSet.start();
+    }
+
+
 
 }
