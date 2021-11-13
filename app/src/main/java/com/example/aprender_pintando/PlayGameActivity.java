@@ -2,7 +2,7 @@ package com.example.aprender_pintando;
 
 import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.example.aprender_pintando.Domain.ColorBD;
+import com.example.aprender_pintando.Helper.ColorHelper;
 
 public class PlayGameActivity extends BaseActivity {
     ConstraintLayout view;
@@ -12,7 +12,7 @@ public class PlayGameActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         ConstraintLayout view = findViewById(R.id.play_game);
-        view.setBackgroundColor(ColorBD.getColor(view));
+        view.setBackgroundColor(ColorHelper.getColor(view));
     }
 
     @Override
