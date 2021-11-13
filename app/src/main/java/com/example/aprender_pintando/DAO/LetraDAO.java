@@ -48,7 +48,7 @@ public class LetraDAO extends BaseDAO {
         letraValores.put("isVisualized", false);
         letraValores.put("isCompleted", false);
 
-        int cant = db.update("letras", letraValores, null, null);
+        int cant = db.update("letras", letraValores, "1=1", null);
     }
 
     public Letra getSiguienteLetra (int nroLetra){

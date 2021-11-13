@@ -12,8 +12,7 @@ public class MotorJuego {
     public MotorJuego(Context context)
     {
         this.lCtrl = new LetraCtrl(context);
-        lCtrl.limpiarLetras();
-        this.Letra = new Letra();
+
     }
 
     // Si estamos leyendo de la base hay que enviar la letra por parametro.

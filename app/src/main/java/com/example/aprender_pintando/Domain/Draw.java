@@ -63,10 +63,6 @@ public class Draw extends View {
         this.coordValidator = coordValidator;
     }
 
-    public ImageButton getBtnTerminar() {
-        return btnTerminar;
-    }
-
     public void setBtnTerminar(ImageButton btnTerminar) {
         this.btnTerminar = btnTerminar;
     }
@@ -149,7 +145,7 @@ public class Draw extends View {
                         letraCompletada.setVisibility(INVISIBLE);
                     }
                 }
-            }, 3000);
+            }, 2000);
 
             return true;
         }

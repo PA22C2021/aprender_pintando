@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class LetraCtrl extends BaseController {
 
     private LetraDAO lDao;
-    private static final int MAX_NRO_LETRA = 27;
+    public static final int MAX_NRO_LETRA = 27;
 
     public LetraCtrl(Context _context) {
         super(_context);

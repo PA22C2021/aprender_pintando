@@ -66,10 +66,13 @@ public class DrawFragment extends Fragment {
             motorJuego = new MotorJuego(getContext(), letra);
             imageLetra.setImageResource(letra.getUrlImagen());
             tvLetraActual.setText(letra.toString());
-
+            actualizarCoordenadas();
         } else {
-            lCtrl.limpiarLetras();
             motorJuego = new MotorJuego(getContext());
+            lCtrl.limpiarLetras();
+            //INSTANCIA LETRA A
+            letra = new Letra();
+            actualizarInfoLetra();
         }
 
         btnReiniciar.setOnClickListener(new View.OnClickListener(){
@@ -86,10 +89,6 @@ public class DrawFragment extends Fragment {
             }
         });
 
-        this.letra.setVisualized(true);
-        this.lCtrl.actualizarLetra(this.letra);
-
-        actualizarCoordenadas();
         draw.setMotorJuego(motorJuego);
         draw.setlCtrl(lCtrl);
         draw.setProgressBar(progressBar);
@@ -104,22 +103,16 @@ public class DrawFragment extends Fragment {
     public void TerminarButtonOnClick(View view)
     {
         draw.ClearDraw();
+
+        if(letra.getNroLetra() == LetraCtrl.MAX_NRO_LETRA){
+            actualizarInfoLetra();
+        }
+
         letra = motorJuego.LetraSiguiente();
 
         if (letra != null)
         {
-            imageLetra.setImageResource(letra.getUrlImagen());
-            tvLetraActual.setText(letra.toString());
-            motorJuego.setLetra(letra);
-
-            actualizarCoordenadas();
-
-            draw.getCoordValidator().setCantCoordenadasValidas(0);
-            progressBar.setProgress(0);
-            progressBar.setMax(letra.getCoordenadas().size());
-            this.letra.setVisualized(true);
-            this.lCtrl.actualizarLetra(this.letra);
-            draw.ClearDraw();
+            actualizarInfoLetra();
         }
         else
         {
@@ -143,6 +136,20 @@ public class DrawFragment extends Fragment {
         CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
         cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
         draw.setCoordValidator(cvAUX);
+    }
+
+    public void actualizarInfoLetra(){
+        imageLetra.setImageResource(letra.getUrlImagen());
+        tvLetraActual.setText(letra.toString());
+        motorJuego.setLetra(letra);
+
+        actualizarCoordenadas();
+
+        draw.getCoordValidator().setCantCoordenadasValidas(0);
+        progressBar.setProgress(0);
+        progressBar.setMax(letra.getCoordenadas().size());
+        this.letra.setVisualized(true);
+        this.lCtrl.actualizarLetra(this.letra);
     }
 
 
