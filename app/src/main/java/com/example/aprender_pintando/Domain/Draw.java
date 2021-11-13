@@ -34,14 +34,12 @@ public class Draw extends View {
     private Canvas drawCanvas;
     private Path drawPath;
     private CoordenadaValidatorHelper coordValidator;
-    private Coordenada coordLetra;
-    ImageButton btnReiniciar, btnTerminar;
-    public int isFirstPath = 0;
 
     ProgressBar progressBar;
     ImageView letraCompletada;
     MotorJuego motorJuego;
     LetraCtrl lCtrl;
+    ImageButton btnTerminar;
 
     Handler handler = new Handler();
 
@@ -57,24 +55,12 @@ public class Draw extends View {
         this.motorJuego = motorJuego;
     }
 
-
     public void setlCtrl(LetraCtrl lCtrl) {
         this.lCtrl = lCtrl;
     }
 
-    public void setCoordLetra(Coordenada coordLetra) {
-        this.coordLetra = coordLetra;
-    }
     public void setCoordValidator(CoordenadaValidatorHelper coordValidator) {
         this.coordValidator = coordValidator;
-    }
-
-    public ImageButton getBtnReiniciar() {
-        return btnReiniciar;
-    }
-
-    public void setBtnReiniciar(ImageButton btnReiniciar) {
-        this.btnReiniciar = btnReiniciar;
     }
 
     public ImageButton getBtnTerminar() {
@@ -87,10 +73,6 @@ public class Draw extends View {
 
     public CoordenadaValidatorHelper getCoordValidator() {
         return coordValidator;
-    }
-
-    public Coordenada getCoordLetra() {
-        return coordLetra;
     }
 
     public Draw(Context context) {
@@ -129,10 +111,6 @@ public class Draw extends View {
         float touchX = event.getX();
         float touchY = event.getY();
 
-        boolean termino = this.coordValidator.validarCoordenadas(touchX, touchY);
-
-        if((isFirstPath % 2 )  != 0  && termino) this.ClearDraw();
-
         switch (event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
@@ -156,11 +134,10 @@ public class Draw extends View {
 
         isClean = false;
         progressBar.setProgress(coordValidator.getCantCoordenadasValidas());
-        this.isFirstPath ++;
 
-        if(termino){
+        if(this.coordValidator.validarCoordenadas(touchX, touchY)){
             letraCompletada.setVisibility(VISIBLE);
-
+            handleAnimation(getRootView());
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -168,8 +145,8 @@ public class Draw extends View {
                     if(coordValidator.validarCoordenadas(touchX, touchY)){
                         motorJuego.getLetra().setCompleted(true);
                         lCtrl.actualizarLetra(motorJuego.getLetra());
-                        handleAnimation(getRootView());
                         btnTerminar.callOnClick();
+                        letraCompletada.setVisibility(INVISIBLE);
                     }
                 }
             }, 3000);
@@ -181,11 +158,6 @@ public class Draw extends View {
         invalidate();
         return true;
     }
-
-    public boolean getIsCompleted() {
-        return  this.coordLetra.getCompleted();
-    }
-
 
     public boolean isClean()
     {
@@ -199,20 +171,8 @@ public class Draw extends View {
         invalidate();
     }
 
-    public void SetColor(int color)
-    {
-        ColorPaint = color;
-        drawPaint.setColor(color);
-    }
-
-    public void SetStroke(int stroke)
-    {
-        strokePaint = stroke;
-        drawPaint.setStrokeWidth(stroke);
-    }
-
     public void handleAnimation (View view) {
-        ObjectAnimator animatorStars = ObjectAnimator.ofFloat(letraCompletada, "y", 420f);
+        ObjectAnimator animatorStars = ObjectAnimator.ofFloat(letraCompletada, "y", 0f, 220f);
         animatorStars.setDuration(3000);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(animatorStars);

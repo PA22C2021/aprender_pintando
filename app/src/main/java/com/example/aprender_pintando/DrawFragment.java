@@ -68,6 +68,7 @@ public class DrawFragment extends Fragment {
             tvLetraActual.setText(letra.toString());
 
         } else {
+            lCtrl.limpiarLetras();
             motorJuego = new MotorJuego(getContext());
         }
 
@@ -94,11 +95,8 @@ public class DrawFragment extends Fragment {
         draw.setProgressBar(progressBar);
         draw.setLetraCompletada(letraCompletada);
         draw.setBtnTerminar(btnTerminar);
-        draw.setBtnReiniciar(btnReiniciar);
-
 
         progressBar.setMax(this.letra.getCoordenadas().size());
-
 
         return draw;
     }
@@ -135,10 +133,7 @@ public class DrawFragment extends Fragment {
         if (!draw.isClean())
         {
             progressBar.setProgress(0);
-            CoordenadaValidatorHelper cvAUX = draw.getCoordValidator();
-            cvAUX.setListaDeCoordenadas(this.letra.getCoordenadas());
-            draw.setCoordValidator(cvAUX);
-
+            actualizarCoordenadas();
             ReiniciarLetraDialog.GetAlertDialog(view, draw).show();
         }
     }
