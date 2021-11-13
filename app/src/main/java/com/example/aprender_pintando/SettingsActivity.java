@@ -33,10 +33,12 @@ public class SettingsActivity extends BaseActivity  {
     }
 
     public void setearSonido(View view){
+
+        cargarSonidos();
         int sonido = Integer.parseInt(view.getTag().toString());
 
         if(rSonido != sonido){
-            sonidos[rSonido].stop();
+            sonidos[rSonido].pause();
             sonidos[sonido].start();
             rSonido = sonido;
             ConfiguracionCtrl cfg  = new ConfiguracionCtrl(this);

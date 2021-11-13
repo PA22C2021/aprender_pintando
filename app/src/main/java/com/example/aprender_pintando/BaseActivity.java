@@ -33,4 +33,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     {
         VolverMenuDialog.GetAlertDialog(view, this).show();
     }
+
+    protected void cargarSonidos(){
+        if(sonidos[0] == null)
+            sonidos[0] = MediaPlayer.create(this, R.raw.sound01);
+        if(sonidos[1] == null)
+            sonidos[1] = MediaPlayer.create(this, R.raw.sound02);
+        if(sonidos[2] == null)
+            sonidos[2] = MediaPlayer.create(this, R.raw.sound03);
+        if(sonidos[3] == null)
+            sonidos[3] = MediaPlayer.create(this, R.raw.sound04);
+    }
+
+    @Override
+    protected void onDestroy() {
+        for (int i = 0; i< 4; i++) {
+            if(sonidos[i].isPlaying())
+                sonidos[i].stop();
+        }
+
+        super.onDestroy();
+    }
 }

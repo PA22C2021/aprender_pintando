@@ -43,7 +43,7 @@ public class CoordenadaValidatorHelper {
 
 
     public boolean validarCoordenadas (float touchX, float touchY){
-        int errorMargin = 60;
+        int errorMargin = 75;
         for(Coordenada c : this.listaDeCoordenadas){
             float pixelWithMarginErrorXPlus = c.getX() + errorMargin;
             float pixelWithMarginErrorXMinus = c.getX() - errorMargin;

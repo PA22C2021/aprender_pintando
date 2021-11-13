@@ -49,16 +49,6 @@ public class MainActivity extends BaseActivity  {
         return R.layout.activity_main;
     }
 
-    private void cargarSonidos(){
-        if(sonidos[0] == null)
-            sonidos[0] = MediaPlayer.create(this, R.raw.sound01);
-        if(sonidos[1] == null)
-            sonidos[1] = MediaPlayer.create(this, R.raw.sound02);
-        if(sonidos[2] == null)
-            sonidos[2] = MediaPlayer.create(this, R.raw.sound03);
-        if(sonidos[3] == null)
-            sonidos[3] = MediaPlayer.create(this, R.raw.sound04);
-    }
 
     private void iniciarSonidoAleatorio(){
 
@@ -66,7 +56,7 @@ public class MainActivity extends BaseActivity  {
         if(!sonidos[rSonido].isPlaying()){
             for (int i = 0; i< 4; i++) {
                 if(sonidos[i].isPlaying())
-                    sonidos[i].stop();
+                    sonidos[i].pause();
             }
             sonidos[rSonido].start();
             sonidos[rSonido].setLooping(true);
@@ -77,7 +67,7 @@ public class MainActivity extends BaseActivity  {
         if(!sonidos[sonido].isPlaying()){
             for (int i = 0; i< 4; i++) {
                 if(sonidos[i].isPlaying())
-                    sonidos[i].stop();
+                    sonidos[i].pause();
             }
             sonidos[sonido].start();
             sonidos[sonido].setLooping(true);
