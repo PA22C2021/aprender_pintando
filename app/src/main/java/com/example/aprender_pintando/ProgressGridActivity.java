@@ -4,16 +4,13 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.example.aprender_pintando.Adapter.LetraAdapter;
 import com.example.aprender_pintando.Domain.Letra;
 import com.example.aprender_pintando.Controller.LetraCtrl;
-
 import java.util.ArrayList;
 
 public class ProgressGridActivity extends BaseActivity  {
@@ -35,8 +32,14 @@ public class ProgressGridActivity extends BaseActivity  {
 
         if(lCtrl.getLetraPendiente() == null){
             createImage();
-            view.addView(juegoCompletado);
             animateImage();
+            juegoCompletado.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    animateImage();
+                }
+            });
+            view.addView(juegoCompletado);
         }
 
     }
@@ -54,7 +57,7 @@ public class ProgressGridActivity extends BaseActivity  {
         juegoCompletado.setScaleType(ImageView.ScaleType.FIT_CENTER);
         Drawable drawable = getResources().getDrawable( R.drawable.juego_completado );
         juegoCompletado.setBackground(drawable);
-        int widthImage = 600;
+        int widthImage = 700;
         juegoCompletado.setLayoutParams(new ConstraintLayout.LayoutParams(widthImage,800));
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -66,22 +69,10 @@ public class ProgressGridActivity extends BaseActivity  {
 
     private void animateImage(){
 
-        int time = 800;
-        int rotationgrade = 25;
-        juegoCompletado.animate().rotation(rotationgrade).setDuration(time);
-        juegoCompletado.animate().rotation(0).setDuration(time);
-        juegoCompletado.animate().rotation(rotationgrade * -1).setDuration(time);
+        juegoCompletado.startAnimation(AnimationUtils.loadAnimation(
+                getApplicationContext(),
+                R.anim.custom_rotation
+        ));
 
-        juegoCompletado.animate().rotation(rotationgrade).setDuration(time);
-        juegoCompletado.animate().rotation(0).setDuration(time);
-        juegoCompletado.animate().rotation(rotationgrade * -1).setDuration(time);
-
-        juegoCompletado.animate().rotation(rotationgrade).setDuration(time);
-        juegoCompletado.animate().rotation(0).setDuration(time);
-        juegoCompletado.animate().rotation(rotationgrade * -1).setDuration(time);
-
-        juegoCompletado.animate().rotation(0).setDuration(time);
-
-        //juegoCompletado.setVisibility(View.INVISIBLE);
     }
 }
