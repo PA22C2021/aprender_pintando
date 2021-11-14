@@ -1,5 +1,6 @@
 package com.example.aprender_pintando;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -60,7 +61,6 @@ public class DrawFragment extends Fragment {
 
         lCtrl = new LetraCtrl(getContext());
 
-
         letra = lCtrl.getLetraPendiente();
         if(letra != null){
             motorJuego = new MotorJuego(getContext(), letra);
@@ -109,7 +109,6 @@ public class DrawFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         cargarSiguienteLetra(view);
-
                     }
                 });
                 alert.show();

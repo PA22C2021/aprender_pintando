@@ -60,8 +60,8 @@ public abstract class DialogHelper {
                         dialog.dismiss();
                     }
                 })
-                .setTitle("Reiniciar")
-                .setMessage("¿Reiniciar la letra?")
+                .setTitle("REINICIAR")
+                .setMessage("¿Reiniciar letra?")
                 .create();
 
         return dialogo;
