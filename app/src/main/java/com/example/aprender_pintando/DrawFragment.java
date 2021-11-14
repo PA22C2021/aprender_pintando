@@ -102,18 +102,20 @@ public class DrawFragment extends Fragment {
 
     public void TerminarButtonOnClick(View view)
     {
-        if(!letra.isCompleted()){
-            AlertDialog alert = DialogHelper.ConfirmSiguienteLetra(view);
-            alert.setButton(Dialog.BUTTON_POSITIVE, "SI", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    cargarSiguienteLetra(view);
+        if(letra != null){
+            if(!letra.isCompleted()){
+                AlertDialog alert = DialogHelper.ConfirmSiguienteLetra(view);
+                alert.setButton(Dialog.BUTTON_POSITIVE, "SI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cargarSiguienteLetra(view);
 
-                }
-            });
-            alert.show();
-        }else{
-            cargarSiguienteLetra(view);
+                    }
+                });
+                alert.show();
+            }else{
+                cargarSiguienteLetra(view);
+            }
         }
     }
 

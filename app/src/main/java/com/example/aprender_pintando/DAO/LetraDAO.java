@@ -56,16 +56,19 @@ public class LetraDAO extends BaseDAO {
         SQLiteDatabase db = admin.getReadableDatabase();
 
         Cursor fila = db.rawQuery("SELECT * FROM letras WHERE nroLetra > " + nroLetra + " AND isCompleted = 0"  , null);
-        fila.moveToFirst();
+        Letra letra = null;
+        while (fila.moveToNext()) {
+            String string = fila.getString(0);
+            boolean isVisualized = fila.getInt(1) == 0 ? false : true;
+            boolean isCompleted = fila.getInt(2) == 0 ? false : true;
+            int _nroLetra = fila.getInt(3);
+            letra = new Letra(string,isVisualized,isCompleted,_nroLetra);
+        }
 
-        String letra = fila.getString(0);
-        boolean isVisualized = fila.getInt(1) == 0 ? false : true;
-        boolean isCompleted = fila.getInt(2) == 0 ? false : true;
-        int _nroLetra = fila.getInt(3);
 
         fila.close();
         db.close();
-        return new Letra(letra,isVisualized,isCompleted,_nroLetra);
+        return letra;
     }
 
     public ArrayList<Letra> getTodasLasLetras (){
